@@ -22,7 +22,8 @@ To https://github.com/Bin4xin/B4xinSynchronize.git
 * [new branch]      master -> master
 ```
 - 2021年 4月16日 星期五 19时53分40秒 CST完成初版Beta
-- 待更新...
+- 具体使用方法待更新...
+
 *And It's Done!What's NEXT?*
 
 ### 下一步计划
@@ -32,10 +33,10 @@ To https://github.com/Bin4xin/B4xinSynchronize.git
     - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式](https://github.com/Bin4xin/B4xinSynchronize/blob/master/main.sh)
     - [ ] 3.计划新增服务端同步脚本
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本
-        * [x] Darwin 20.3.0 MACos Big Sur
-        * [ ] Ubuntu 18.0/20.0
-        * [ ] CentOS 7
-        * [ ] ...
+        - [x] i Darwin 20.3.0 MACos Big Sur
+        - [ ] ii Ubuntu 18.0/20.0
+        - [ ] iii CentOS 7
+        - [ ] iiii ...
     - [ ] [5.优化脚本已知问题，欢迎提交issues。](https://github.com/Bin4xin/B4xinSynchronize/issues/new)
   
 以上。
