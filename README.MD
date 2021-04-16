@@ -9,6 +9,9 @@
     - 1.对用户输入进行`while:do`循环判断，不会因错误的用户输入导致程序异常终止，保障程序代码的健壮性；
     - 2.定义了程序运行环境下的环境变量，保障程序在不同Linux发行版下运行的稳定性、美观性；
     - 3.调用了BASH语法的转义功能，增强程序用户体验和交互能力；
+- 参考：
+    - [*BT panel*](https://github.com/Bin4xin/B4xinSynchronize/tree/master/panel)
+
 
 ### 使用方法
 - bash终端命令

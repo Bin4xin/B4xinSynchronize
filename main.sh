@@ -64,7 +64,7 @@ Synchronize_update_fun(){
   #if git,then
   echo -e "\033[34m·[*Info]Synchronize update is running... \033[0m"
   cd $gitPath && git add .
-  cd $gitPath && git commit -m "B4xinSynchronize 1st commit"
+  cd $gitPath && git commit -m "B4xinSynchronize commit ;README and others Update."
   cd $gitPath && git push
   sleep 1
   exit
