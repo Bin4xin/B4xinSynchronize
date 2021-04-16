@@ -6,6 +6,9 @@ LANG=en_US.UTF-8
 ##Incoming running mode parameters exchange to galbol para.
 run_mode="$1"
 ##use if statement to judge detection working mode
+#set type to dw==diferent workspace: your blog (jekyll server) work space different from git workspace;
+#such as your jekyll build '_site' dir equals to ~/blog/jekyll/www/_site/ , git(master) dir equals to ~/blog/git/{yourname}.github.io/
+#so use {dw}.
 run_Main(){
   if [ $run_mode = "dw" ];then
     exec_mode=$(echo 'different worksace(dw) mode')
