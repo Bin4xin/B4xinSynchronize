@@ -11,7 +11,7 @@
 
 - 工作流程图：
 
-<div align=center><img width="180px" height="550px" src="/assets/B4xinSynchronize-workflow.png"/></div>
+<div align=center><img width="280px" height="400px" src="/assets/B4xinSynchronize-workflow.png"/></div>
 
 ### 使用方法
 - bash终端命令
