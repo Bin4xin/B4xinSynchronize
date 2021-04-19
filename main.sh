@@ -58,14 +58,19 @@ differentWorkspace_mode_fun(){
 
 sameWorkspace_mode_fun(){
   echo "im here(in sameWorkspace_mode_fun now!)"
+  whereIam=`pwd`
+  cd $whereIam && Synchronize_update_fun
   #echo -e "--------------------------------------------"
+
 }
 Synchronize_update_fun(){
+  #echo $whereIam
   #if git,then
+  update=`date -R`
   echo -e "\033[34m·[*Info]Synchronize update is running... \033[0m"
-  cd $gitPath && git add .
-  cd $gitPath && git commit -m "B4xinSynchronize commit ;README and others Update."
-  cd $gitPath && git push
+  git add .
+  git commit -m "$update commit by B4xinSynchronize."
+  git push
   sleep 1
   exit
 }
