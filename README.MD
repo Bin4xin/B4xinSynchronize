@@ -11,7 +11,7 @@
 
 - 工作流程图：
 
-![workflow.png](/assets/B4xinSynchronize-workflow.png)
+<div align=center><img width="550px" height="180px" src="/assets/B4xinSynchronize-workflow.png"/></div>
 
 ### 使用方法
 - bash终端命令
@@ -25,15 +25,18 @@ To https://github.com/Bin4xin/B4xinSynchronize.git
 * [new branch]      master -> master
 ```
 现有需求：
-case1.更新github仓库代码；
-case2.更新个人服务器服务器代码。
+case1.更新github仓库代码；case2.更新个人服务器服务器代码。
+
 本地github工作目录[~/blog/github-code/B4xinSynchronize/](https://github.com/Bin4xin/B4xinSynchronize)
-本地：bash调试目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/]()、jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/]()
+
+本地：bash调试目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/]()
+
+jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/]()
 
 - case1.*sw mode:[same workspace]* 不需要对（构建后的）代码进行二次移动，直接可以上传；
     - 运行前请检查git是否进行全局配置：`git config --list`，个人建议先进行全局配置；
         - [参考：起步 - 初次运行 Git 前的配置](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE)
-        - 此处case输入`~/blog/github-code/B4xinSynchronize/`，则更新的为`B4xinSynchronize`仓库
+        - 此处case假设在`~/blog/github-code/B4xinSynchronize/`目录下运行`B4xinSynchronize.sh`那么则更新的为`B4xinSynchronize`仓库
     - 同步更新
     
 - case2.*dw mode:[different workspace]* 需要对（构建后的）代码进行二次移动，才能上传。
@@ -43,8 +46,9 @@ case2.更新个人服务器服务器代码。
     - 同步更新
 - ~~具体使用方法待更新...~~
 - *Project Log:*
-    - 2021年 4月16日 星期五 19时53分40秒 CST 完成初版Beta
-    - 2021年 4月19日 星期一 14时45分14秒 CST 
+    - 2021年 4月12日 星期一 15时21分49秒 CST 产生想法需求；
+    - 2021年 4月16日 星期五 19时53分40秒 CST 完成初版Beta；
+    - 2021年 4月19日 星期一 14时45分14秒 CST ：
         - 客户端更新脚本基本功能已完成
         - README 关于脚本基本介绍与用法已完成
 
@@ -72,7 +76,7 @@ case2.更新个人服务器服务器代码。
     - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/main.sh)
     - [ ] 3.计划新增服务端同步脚本；
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本；
-        - [x] i Darwin 20.3.0 MACos Big Sur
+        - [x] i Darwin 20.3.0 MacOS Big Sur
         - [ ] ii Ubuntu 18.0/20.0
         - [ ] iii CentOS 7
         - [ ] iiii ...
