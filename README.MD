@@ -51,7 +51,10 @@ jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site
     - 2021年 4月19日 星期一 14时45分14秒 CST ：
         - 客户端更新脚本基本功能已完成
         - README 关于脚本基本介绍与用法已完成
-
+    - 2021年 4月20日 星期二 11时36分53秒 CST ：
+        - 新增服务端同步脚本：[*Sserver.sh*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sserver.sh)
+        - 重写`differentWorkspace_mode_fun`函数下的本地文件夹同步功能
+            - 使用衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
 
 
 ### *B4xinSynchronize v0.1*
