@@ -83,6 +83,9 @@ jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site
         - 新增服务端同步脚本：[*Sserver.sh*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sserver.sh)
         - 重写`differentWorkspace_mode_fun`函数下的本地文件夹同步功能
             - 使用衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
+    - 2021年 4月20日 星期二 22时23分05秒 CST ：
+        - 新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
+        - less input...
 
 
 ### *B4xinSynchronize v0.1*

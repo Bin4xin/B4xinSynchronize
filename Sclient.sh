@@ -2,14 +2,13 @@
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 LANG=en_US.UTF-8
-
-##Incoming running mode parameters exchange to galbol para.
-run_mode="$1"
 ##use if statement to judge detection working mode
 #set type to dw==diferent workspace: your blog (jekyll server) work space different from git workspace;
 #such as your jekyll build '_site' dir equals to ~/blog/jekyll/www/_site/ , git(master) dir equals to ~/blog/git/{yourname}.github.io/
 #so use {dw}.
 run_Main(){
+  #Determine the operating mode of the incoming parameters
+  #mode dw to run.
   if [ $run_mode = "dw" ];then
     exec_mode=$(echo 'different worksace(dw) mode')
     echo -e "mode:${exec_mode}"
@@ -18,15 +17,38 @@ run_Main(){
     #cd $path && pwd && touch test.txt
     echo -e $gitPath
     echo -e $buildPath
+    ##here to exchange modeFunction.Just another Determine
     differentWorkspace_mode_fun
-
+  ##mode sw to run.
   elif [ $run_mode = "sw" ];then
     exec_mode=$(echo 'same worksace(sw) mode')
     echo -e "mode:${exec_mode}"
     sameWorkspace_mode_fun
   fi
 }
-
+##in beta
+Remember_Me_Fun(){
+if [ -s "Golbal_Var.sh" ];then
+	source ./Golbal_Var.sh
+	echo "Golbal_Var存在,next."
+	#Ask_From_Me
+elif [ ! -s "Golbal_Var.sh" ];then
+	#statements
+	echo "error! start to echo var to files;)"
+	echo testPra=$testPra >> config/Golbal_Var.sh
+	echo testPra1=$testPra >> config/Golbal_Var.sh
+	echo testPra2=$testPra >> config/Golbal_Var.sh
+fi
+Ask_From_Me
+}
+##in beta
+Ask_From_Me(){
+	source ./Golbal_Var.sh
+	echo "looks you have var files now!"
+	echo $testPra
+	echo $testPra1
+	echo $testPra2
+}
 
 differentWorkspace_mode_fun(){
   echo -e "+----------------------------------------------+"
@@ -73,6 +95,10 @@ Synchronize_update_fun(){
   exit
 }
 
+##Define Incoming running mode parameters exchange to galbol para.
+run_mode="$1"
+
+##firstly to run this program. Read user input to ensure.
 read -p "·[*Info] are you sure?(y/n): " go;
 while [ "$go" != 'y' ] && [ "$go" != 'n' ]
 do
@@ -82,11 +108,14 @@ done
 if [ "$go" == 'n' ];then
 	exit;
 fi
-
-##
+##Determine whether the incoming parameters are recognized by the program
+##otherwise the program will exit abnormally, let the program judge by itself.
 if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ];then
   echo -e "\033[31m·[*Warn]ERROR: parameter error; \033[0m"
   echo -e "\033[34m·[*Info]Usage: bash Sclient.sh [dw/sw] \033[0m"
   exit;
 fi
+##so,what i want to show you exactly is:
+##Clear program framework and running status, good code style will make work easier
 run_Main
+##redirect to main func , and main func defined what program will do next one by one or run Concurrently.
