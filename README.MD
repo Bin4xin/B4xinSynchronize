@@ -14,6 +14,18 @@
 <div align=center><img width="280px" height="400px" src="/assets/B4xinSynchronize-workflow.png"/></div>
 
 ### 使用方法
+- 文件夹结构
+```
+./
+├── README.MD                   ────介绍文档
+├── Sclient.sh                  ────客户端代码同步脚本 
+├── Sserver.sh                  ────服务端
+├── assets                      ────静态资源
+├── exclue_delete_files.txt     ────同步删除规则
+├── gitWorkspace                ────工作测试目录
+├── jekyllWorkspace             ────构建测试目录
+└── panel                       ────bash脚本语法参考
+```
 - bash终端命令
 ```
 $ curl -o B4xinSynchronize.sh https://raw.githubusercontent.com/Bin4xin/B4xinSynchronize/master/Sclient.sh
@@ -24,12 +36,13 @@ $ bash B4xinSynchronize.sh [dw/sw]
 To https://github.com/Bin4xin/B4xinSynchronize.git
 * [new branch]      master -> master
 ```
-现有需求：
-case1.更新github仓库代码；case2.更新个人服务器服务器代码。
-
+- 现有需求：
+    - case1.更新github仓库代码；
+    - case2.更新个人服务器服务器代码。
+    
 本地github工作目录[~/blog/github-code/B4xinSynchronize/](https://github.com/Bin4xin/B4xinSynchronize)
 
-本地：bash调试目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/]()
+本地：bash调试构建目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/]()
 
 jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/]()
 
@@ -77,7 +90,7 @@ jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site
 - [*B4xinSynchronize Version 0.1 Release*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
     - [ ] 1.计划新增[git server. / jekyll server. / other servers...]等选项更新；
     - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
-    - [ ] 3.计划新增服务端同步脚本；
+    - [x] 3.计划新增服务端同步脚本；
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本；
         - [x] i Darwin 20.3.0 MacOS Big Sur
         - [ ] ii Ubuntu 18.0/20.0
