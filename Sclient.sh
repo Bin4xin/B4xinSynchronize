@@ -47,13 +47,11 @@ differentWorkspace_mode_fun(){
     fi
     sameWorkspace_mode_fun
   fi
-  #mkdir $buildPath/_site/ && touch $buildPath/_site/create_by_bash.sh
-  #mkdir $gitPath/_site/
-  cd $buildPath/ && cp -R ./* $gitPath/
-  #cd $buildPath && pwd
+  ##start to use rsync(update & delete) all dir excpet '--exclude0-from'
+  cd $buildPath/ && rsync -avpz --delete-before --exclude-from exclue_delete_files.txt ./ $gitPath/
   echo -e "\033[34m·[*Info]Synchronize copy is running... \033[0m"
   sleep 1
-  Synchronize_update_fun
+  cd $gitPath && Synchronize_update_fun
 }
 
 sameWorkspace_mode_fun(){
@@ -88,7 +86,7 @@ fi
 ##
 if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ];then
   echo -e "\033[31m·[*Warn]ERROR: parameter error; \033[0m"
-  echo -e "\033[34m·[*Info]Usage: bash main.sh [dw/sw] \033[0m"
+  echo -e "\033[34m·[*Info]Usage: bash Sclient.sh [dw/sw] \033[0m"
   exit;
 fi
 run_Main

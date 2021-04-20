@@ -16,7 +16,7 @@
 ### 使用方法
 - bash终端命令
 ```
-$ curl -o B4xinSynchronize.sh https://raw.githubusercontent.com/Bin4xin/B4xinSynchronize/master/main.sh
+$ curl -o B4xinSynchronize.sh https://raw.githubusercontent.com/Bin4xin/B4xinSynchronize/master/Sclient.sh
 $ bash B4xinSynchronize.sh [dw/sw]
 ···
 ·[*Info]Synchronize copy is running... 
@@ -56,7 +56,7 @@ jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site
 
 ### *B4xinSynchronize v0.1*
 
-[*B4xinSynchronize Version 0.1 beta*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/main.sh)
+[*B4xinSynchronize Version 0.1 beta*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
 
 - 基于C/S架构的双端代码同步脚本，由bin4xin编码和开源；
 - *Dual-end code synchronization script based on C/S architecture.*
@@ -71,9 +71,9 @@ jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site
 
 ### 下一步计划
 
-- [*B4xinSynchronize Version 0.1 Release*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/main.sh)
+- [*B4xinSynchronize Version 0.1 Release*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
     - [ ] 1.计划新增[git server. / jekyll server. / other servers...]等选项更新；
-    - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/main.sh)
+    - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
     - [ ] 3.计划新增服务端同步脚本；
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本；
         - [x] i Darwin 20.3.0 MacOS Big Sur
