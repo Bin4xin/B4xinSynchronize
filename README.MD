@@ -1,5 +1,20 @@
 # B4xinSynchronize：基于C/S架构的双端代码同步脚本
 
+### *注意！ATTENTION PLZ!!!*
+
+您若下载并使用该开源代码应充分认知并理解：
+    
+- 1.数据无价，在您未完全理解代码用途前，使用脚本请先备份您的数据；
+- 2.由于第三方（人、平台）传播、二次开发、脚本滥用等行为而造成的任何直接或者间接的后果及损失跟作者无关，均由使用者本人负责，本文作者不为此承担任何责任。
+- 3.尊重个人劳动成果，**禁止用作商业用途**并个人使用请申明出处： [B4xinSynchronize](https://github.com/Bin4xin/B4xinSynchronize)
+
+
+If you download and use the open source code, you should fully recognize and understand:
+
+- i.Data is priceless. Before you fully understand the purpose of the code, please back up your data ;
+- ii.Any direct or indirect consequences and losses caused by third-party (person, platform) dissemination, secondary development, script abuse, etc. have nothing to do with the author and are the responsibility of the user himself, and the author of this article does not bear any responsibility for this.
+- iii.Respect personal labor results, prohibit commercial use . Personal use please state the source: [B4xinSynchronize](https://github.com/Bin4xin/B4xinSynchronize)
+
 ### 什么是*B4xinSynchronize*
 
 - 功能
