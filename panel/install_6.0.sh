@@ -72,6 +72,7 @@ Install_Check(){
 }
 System_Check(){
 	MYSQLD_CHECK=$(ps -ef |grep mysqld|grep -v grep|grep -v /www/server/mysql)
+	MYSQLD_CHECK=$(ps -ef |grep mysqld|grep -v grep|grep -v /www/server/mysql)
 	PHP_CHECK=$(ps -ef|grep php-fpm|grep master|grep -v /www/server/php)
 	NGINX_CHECK=$(ps -ef|grep nginx|grep master|grep -v /www/server/nginx)
 	HTTPD_CHECK=$(ps -ef |grep -E 'httpd|apache'|grep -v /www/server/apache|grep -v grep)
