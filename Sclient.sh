@@ -60,10 +60,10 @@ differentWorkspace_mode_fun(){
     read -p "same path?change to sw mode?(y/n):" ensure_ModeChange;
     while [ "$ensure_ModeChange" != 'y' ]&& [ "$ensure_ModeChange" != 'n' ]
     do
-	    read -p "·[*Warn]: PLZ type in (y/n): " ensure_ModeChange;
+	    read -p "● [Warn]: PLZ type in (y/n): " ensure_ModeChange;
     done
     if [ "$ensure_ModeChange" == 'n' ];then
-      echo "·[*Info]: your chioce is no.so stop this program..."
+      echo "● [Info]: your chioce is no.so stop this program..."
       sleep 1
       exit;
     fi
@@ -71,7 +71,7 @@ differentWorkspace_mode_fun(){
   fi
   ##start to use rsync(update & delete) all dir excpet '--exclude0-from'
   rsync -avpz --delete-before --exclude-from exclue_delete_files.txt $buildPath/ $gitPath/
-  echo -e "\033[34m·[*Info]Synchronize copy is running... \033[0m"
+  echo -e "\033[34m● [Info]Synchronize copy is running... \033[0m"
   sleep 1
   cd $gitPath/ && Synchronize_update_fun
 }
@@ -87,7 +87,7 @@ Synchronize_update_fun(){
   #echo $whereIam
   #if git,then
   update=`date -R`
-  echo -e "\033[34m[●Info]Synchronize update is running... \033[0m"
+  echo -e "\033[34m● [Info]Synchronize update is running... \033[0m"
   git add .
   git commit -m "$update commit by B4xinSynchronize."
   git push
@@ -99,10 +99,10 @@ Synchronize_update_fun(){
 run_mode="$1"
 
 ##firstly to run this program. Read user input to ensure.
-read -p "·[*Info] are you sure?(y/n): " go;
+read -p "● [Info] are you sure?(y/n): " go;
 while [ "$go" != 'y' ] && [ "$go" != 'n' ]
 do
-	read -p "·[*Warn]: PLZ type in (y/n): " go;
+	read -p "● [Warn]: PLZ type in (y/n): " go;
 done
 
 if [ "$go" == 'n' ];then
@@ -111,8 +111,8 @@ fi
 ##Determine whether the incoming parameters are recognized by the program
 ##otherwise the program will exit abnormally, let the program judge by itself.
 if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ];then
-  echo -e "\033[31m·[*Warn]ERROR: parameter error; \033[0m"
-  echo -e "\033[34m·[*Info]Usage: bash Sclient.sh [dw/sw] \033[0m"
+  echo -e "\033[31m● [Warn]ERROR: parameter error; \033[0m"
+  echo -e "\033[34m● [Info]Usage: bash Sclient.sh [dw/sw] \033[0m"
   exit;
 fi
 ##so,what i want to show you exactly is:
