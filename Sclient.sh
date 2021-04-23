@@ -70,16 +70,16 @@ differentWorkspace_mode_fun(){
     sameWorkspace_mode_fun
   fi
   ##start to use rsync(update & delete) all dir excpet '--exclude0-from'
-  cd $buildPath/ && rsync -avpz --delete-before --exclude-from exclue_delete_files.txt ./ $gitPath/
+  rsync -avpz --delete-before --exclude-from exclue_delete_files.txt $buildPath/ $gitPath/
   echo -e "\033[34m·[*Info]Synchronize copy is running... \033[0m"
   sleep 1
-  cd $gitPath && Synchronize_update_fun
+  cd $gitPath/ && Synchronize_update_fun
 }
 
 sameWorkspace_mode_fun(){
   echo "im here(in sameWorkspace_mode_fun now!)"
-  whereIam=`pwd`
-  cd $whereIam && Synchronize_update_fun
+  whereAmI=`pwd`
+  cd $whereAmi && Synchronize_update_fun
   #echo -e "--------------------------------------------"
 
 }
@@ -87,7 +87,7 @@ Synchronize_update_fun(){
   #echo $whereIam
   #if git,then
   update=`date -R`
-  echo -e "\033[34m·[*Info]Synchronize update is running... \033[0m"
+  echo -e "\033[34m[●Info]Synchronize update is running... \033[0m"
   git add .
   git commit -m "$update commit by B4xinSynchronize."
   git push

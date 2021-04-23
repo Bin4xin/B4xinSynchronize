@@ -1,4 +1,5 @@
 #!/bin/bash
+source ./config/color_print_fun.sh
 
 Loading_Percent_Show(){
 i=0
@@ -22,25 +23,37 @@ do
 done
 sleep 0.3
 printf "\n"
-echo "备份计划 >> [crontab -l > /tmp/cornconf.bak]..."
-printf "%-5s %-15s %-45s\n" []任务: $Crontab_task_show_bakUP "----------> "DONE.....
+echo  "[备份计划] >> [crontab -l > config/golbal_var.sh.]..."
+green "● [Info]任务1: $Crontab_task_show_bakUP ----------> DONE....."
 sleep 0.9
-echo "写入计划 >> [/tmp/cornconf.bak]..."
-printf "%-5s %-15s %-45s\n" []任务: $Crontab_task_show_addPlan "----------> "DONE.....
+echo "[写入计划] >> [config/golbal_var.sh]..."
+green "● [Info]任务2: $Crontab_task_show_addPlan ----------> DONE....."
 sleep 0.9
-echo "执行计划 << [/tmp/cornconf.bak]..."
-printf "%-5s %-15s %-45s\n" []任务: $Crontab_task_show_runCron "----------> "DONE.....
+echo "[执行计划] << [config/golbal_var.sh]..."
+green "● [Info]任务3: $Crontab_task_show_runCron ----------> DONE....."
 sleep 0.9
 }
 
-Add_CrontabPlan_Main(){
-	#crontab scripts command run.
-	printf "\033[49;33m$Crontab_Task\033[0m\n"
-#	crontab -l > /tmp/cornconf.bak
-#	echo "* * * * * git checkout -f" >> /tmp/cornconf.bak
-#	crontab /tmp/cornconf.bak
-  #set some var.
-	echo "plz check your corn plan in  /tmp/cornconf.bak"
+CrontabPlan_Main(){
+	#bakup crontab plan to files(in this progarm:config/golbal_var.sh)
+	printf "\033[49;33m备份您的当前的Crontab计划\033[0m\n"
+	crontab -l >> config/golbal_var.sh
+	##
+	cd $work_path/.git/hooks/ && touch HOOK_B4xinSynchronize
+  cat >>$work_path/.git/hooks/HOOK_B4xinSynchronize<<EOF
+#!/bin/bash
+PATH=$PATH:/usr/bin
+cd $work_path && git checkout -f
+EOF
+
+	##
+	#add new plan >> config/golbal_var.sh
+	cat >>config/golbal_var.sh<<EOF
+* * * * * bash $work_path/.git/hooks/HOOK_B4xinSynchronize
+EOF
+  #exec newest cron plan
+  printf "\033[49;33m执行添加最新的Crontab计划：\033[0m\n"
+  crontab config/golbal_var.sh
 }
 
 Print_Auto_Show(){
@@ -48,20 +61,23 @@ Print_Auto_Show(){
   Crontab_task_show_addPlan="[写入Crontab定时计划]"
   Crontab_task_show_runCron="[执行Crontab定时计划]"
   printf "%-5s %-20s %-20s %-20s\n" 任务进行中: $Crontab_task_show_bakUP $Crontab_task_show_addPlan $Crontab_task_show_runCron
-  Crontab_Task=`crontab -l`
-  #printf "\033[49;33m$Crontab_Task\033[0m\n"
 }
 Check_Crontab_list(){
-  printf "当前最新计划表为：\n"
-  #printf "\033[49;34m$Crontab_Task\033[0m|\n"
-  cat /tmp/cornconf.bak|bash draw_table.sh -4
+  printf "\033[49;33m当前最新Crontab计划表为：\033[0m\n"
+  cat config/golbal_var.sh|bash draw_table.sh -4
 }
 Run_Main(){
-  Print_Auto_Show
-  Add_CrontabPlan_Main && Loading_Percent_Show
+  green "● 运行中..." && Print_Auto_Show
+  CrontabPlan_Main && Loading_Percent_Show
   printf "\n"
   Check_Crontab_list
   printf "ALL DONE..."
 }
 
+work_path="$1"
+if [ ! -n "$work_path" ];then
+  echo -e "\033[31m·[*Warn]ERROR: parameter error; \033[0m"
+  echo -e "\033[34m·[*Info]Usage: bash Sserver.sh [{/path/to/git_workSpace/}] \033[0m"
+  exit;
+fi
 Run_Main
