@@ -29,6 +29,27 @@ If you download and use the open source code, you should fully recognize and und
 <div align=center><img width="280px" height="400px" src="/assets/B4xinSynchronize-workflow.png"/></div>
 
 ### 使用方法
+- 现有需求：
+    - case1.更新github仓库代码；
+    - case2.更新个人服务器服务器代码。
+    
+本地github工作目录[/blog/github-code/B4xinSynchronize/](https://github.com/Bin4xin/B4xinSynchronize)
+
+本地：bash调试构建目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/]()
+
+jekyll博客构建生成目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/]()
+
+- case1.*sw mode:[same workspace]* 不需要对（构建后的）代码进行二次移动，直接可以上传；
+    - 运行前请检查git是否进行全局配置：`git config --list`，个人建议先进行全局配置；
+        - [参考：起步 - 初次运行 Git 前的配置](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE)
+        - 此处case假设在`/blog/github-code/B4xinSynchronize/`目录下运行`B4xinSynchronize.sh`那么则更新的为`B4xinSynchronize`仓库
+    - 同步更新
+    
+- case2.*dw mode:[different workspace]* 需要对（构建后的）代码进行二次移动，才能上传。
+    
+    - 根据脚本提示输入待更新目录（Catalog to be updated）、更新参考目录（Update referenced catalog）
+        - 此处case则分别输入`/blog/github-code/B4xinSynchronize/{your_Git_serverPATH}/www/` 和`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/`
+    - 同步更新
 - 文件夹结构
 ```
 ./
@@ -36,42 +57,52 @@ If you download and use the open source code, you should fully recognize and und
 ├── Sclient.sh                  ────客户端代码同步脚本 
 ├── Sserver.sh                  ────服务端
 ├── assets                      ────静态资源
+├── config                      ────配置功能目录
+├── draw_table.sh               ────画图函数
 ├── exclue_delete_files.txt     ────同步删除规则
 ├── gitWorkspace                ────工作测试目录
 ├── jekyllWorkspace             ────构建测试目录
 └── panel                       ────bash脚本语法参考
 ```
 - bash终端命令
-```
-$ curl -o B4xinSynchronize.sh https://raw.githubusercontent.com/Bin4xin/B4xinSynchronize/master/Sclient.sh
-$ bash B4xinSynchronize.sh [dw/sw]
-···
-·[*Info]Synchronize copy is running... 
-·[*Info]Synchronize update is running... 
-To https://github.com/Bin4xin/B4xinSynchronize.git
-* [new branch]      master -> master
-```
-- 现有需求：
-    - case1.更新github仓库代码；
-    - case2.更新个人服务器服务器代码。
+    - client端
+    ```
+    $ git clone https://github.com/Bin4xin/B4xinSynchronize.git
+    $ cd B4xinSynchronize
+    $ bash Sclient.sh [dw/sw]
+    ● [Info] are you sure?(y/n): y
+    ···
+    根据提示输入git工作目录和构建目录
+    /blog/github-code/B4xinSynchronize/{your_Git_serverPATH}/www/
+    /tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
+    ···
+    ● [Info]Synchronize copy is running... 
+    ● [Info]Synchronize update is running...
+    To https://github.com/Bin4xin/B4xinSynchronize.git
+    * [new branch]      master -> master
+    ```
+    - server端
+    ```
+    $ bash Sserver.sh [/path/to/git/workspace/]
+     ● 运行中... 
+    任务进行中: [Crontab定时计划备份] [写入Crontab定时计划] [执行Crontab定时计划]
+    备份您的当前的Crontab计划
+    执行添加最新的Crontab计划：
+    [==================================================>]    
+    [备份计划] >> [crontab -l > config/golbal_var.sh.]...
+     ● [Info]任务1: [Crontab定时计划备份] ----------> DONE..... 
+    [写入计划] >> [config/golbal_var.sh]...
+     ● [Info]任务2: [写入Crontab定时计划] ----------> DONE..... 
+    [执行计划] << [config/golbal_var.sh]...
+     ● [Info]任务3: [执行Crontab定时计划] ----------> DONE..... 
     
-本地github工作目录[~/blog/github-code/B4xinSynchronize/](https://github.com/Bin4xin/B4xinSynchronize)
+    当前最新Crontab计划表为：
+    ╔═══════════════════════════════╗
+    ║   * * * * * git checkout -f   ║
+    ╚═══════════════════════════════╝
+    ALL DONE...
+    ```
 
-本地：bash调试构建目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/]()
-
-jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/]()
-
-- case1.*sw mode:[same workspace]* 不需要对（构建后的）代码进行二次移动，直接可以上传；
-    - 运行前请检查git是否进行全局配置：`git config --list`，个人建议先进行全局配置；
-        - [参考：起步 - 初次运行 Git 前的配置](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE)
-        - 此处case假设在`~/blog/github-code/B4xinSynchronize/`目录下运行`B4xinSynchronize.sh`那么则更新的为`B4xinSynchronize`仓库
-    - 同步更新
-    
-- case2.*dw mode:[different workspace]* 需要对（构建后的）代码进行二次移动，才能上传。
-    
-    - 根据脚本提示输入待更新目录（Catalog to be updated）、更新参考目录（Update referenced catalog）
-        - 此处case则分别输入`~/blog/github-code/B4xinSynchronize/{your_Git_serverPATH}/www/` 和`~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/`
-    - 同步更新
 - ~~具体使用方法待更新...~~
 - *Project Log:*
     - 2021年 4月12日 星期一 15时21分49秒 CST 产生想法需求；
@@ -84,8 +115,11 @@ jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site
         - 重写`differentWorkspace_mode_fun`函数下的本地文件夹同步功能
             - 使用衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
     - 2021年 4月20日 星期二 22时23分05秒 CST ：
-        - 新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
+        - [ ] 新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
         - less input...
+    - 2021年 4月23日 星期五 16时17分54秒 CST ：
+        - [x] 新增服务端同步脚本；
+        - 服务器自动化同步功能已完成：[用法/usage](###使用方法)
 
 
 ### *B4xinSynchronize v0.1*
@@ -106,13 +140,14 @@ jekyll博客构建生成目录[~/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site
 ### 下一步计划
 
 - [*B4xinSynchronize Version 0.1 Release*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
-    - [ ] 1.计划新增[git server. / jekyll server. / other servers...]等选项更新；
+    - [x] 1.计划新增[git server. / jekyll server. / other servers...]等选项更新；
     - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
+        - [ ] git commit暂时使用时间作为基准参考；
     - [x] 3.计划新增服务端同步脚本；
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本；
-        - [x] i Darwin 20.3.0 MacOS Big Sur
-        - [ ] ii Ubuntu 18.0/20.0
-        - [ ] iii CentOS 7
+        - [x] i Darwin 20.3.0 MacOS Big Sur [~~server端~~/client端✅]
+        - [ ] ii Ubuntu 18.0/20.0 [server端✅/client端❎]
+        - [ ] iii CentOS 7 [server端❎/client端❎]
         - [ ] iiii ...
     - [ ] [5.优化脚本已知问题，欢迎提交issues；](https://github.com/Bin4xin/B4xinSynchronize/issues/new)
     - [x] 6.程序运行等待时，加入加载动画；
