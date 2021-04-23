@@ -37,10 +37,9 @@ sleep 0.9
 CrontabPlan_Main(){
 	#bakup crontab plan to files(in this progarm:config/golbal_var.sh)
 	printf "\033[49;33m备份您的当前的Crontab计划\033[0m\n"
-	crontab -l >> config/golbal_var.sh
+	crontab -l >> config/golbal_var.sh && crontab -l >> config/golbal_var.bak
 	##
-	cd $work_path/.git/hooks/ && touch HOOK_B4xinSynchronize
-  cat >>$work_path/.git/hooks/HOOK_B4xinSynchronize<<EOF
+  cat >$work_path/.git/hooks/HOOK_B4xinSynchronize<<EOF
 #!/bin/bash
 PATH=$PATH:/usr/bin
 cd $work_path && git checkout -f
@@ -52,7 +51,7 @@ EOF
 * * * * * bash $work_path/.git/hooks/HOOK_B4xinSynchronize
 EOF
   #exec newest cron plan
-  printf "\033[49;33m执行添加最新的Crontab计划：\033[0m\n"
+  printf "\033[49;33m执行添加最新的Crontab计划\033[0m\n"
   crontab config/golbal_var.sh
 }
 
@@ -64,7 +63,7 @@ Print_Auto_Show(){
 }
 Check_Crontab_list(){
   printf "\033[49;33m当前最新Crontab计划表为：\033[0m\n"
-  cat config/golbal_var.sh|bash draw_table.sh -4
+  crontab -l |bash draw_table.sh -4
 }
 Run_Main(){
   green "● 运行中..." && Print_Auto_Show
@@ -72,12 +71,13 @@ Run_Main(){
   printf "\n"
   Check_Crontab_list
   printf "ALL DONE..."
+  echo
 }
 
 work_path="$1"
 if [ ! -n "$work_path" ];then
-  echo -e "\033[31m·[*Warn]ERROR: parameter error; \033[0m"
-  echo -e "\033[34m·[*Info]Usage: bash Sserver.sh [{/path/to/git_workSpace/}] \033[0m"
+  echo -e "\033[31m● [Warn]ERROR: parameter error; \033[0m"
+  echo -e "\033[34m● [Info]Usage: bash Sserver.sh [{/path/to/git_workSpace/}] \033[0m"
   exit;
 fi
 Run_Main
