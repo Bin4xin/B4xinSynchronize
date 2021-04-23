@@ -79,7 +79,7 @@ differentWorkspace_mode_fun(){
 sameWorkspace_mode_fun(){
   echo "im here(in sameWorkspace_mode_fun now!)"
   whereAmI=`pwd`
-  cd $whereAmi && Synchronize_update_fun
+  cd $whereAmI && Synchronize_update_fun
   #echo -e "--------------------------------------------"
 
 }

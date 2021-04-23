@@ -119,7 +119,7 @@ jekyll博客构建生成目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
         - less input...
     - 2021年 4月23日 星期五 16时17分54秒 CST ：
         - [x] 新增服务端同步脚本；
-        - 服务器自动化同步功能已完成：[用法/usage](###使用方法)
+        - 服务器自动化同步功能已完成：[用法/usage](#使用方法)
 
 
 ### *B4xinSynchronize v0.1*
@@ -142,7 +142,8 @@ jekyll博客构建生成目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
 - [*B4xinSynchronize Version 0.1 Release*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
     - [x] 1.计划新增[git server. / jekyll server. / other servers...]等选项更新；
     - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
-        - [ ] git commit暂时使用时间作为基准参考；
+        - [x] git commit暂时使用时间作为基准参考；
+        - [ ] 计划加入其他基准commit；
     - [x] 3.计划新增服务端同步脚本；
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本；
         - [x] i Darwin 20.3.0 MacOS Big Sur [~~server端~~/client端✅]
