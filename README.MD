@@ -44,7 +44,9 @@ If you download and use the open source code, you should fully recognize and und
     - 2021年 4月23日 星期五 16时17分54秒 CST ：
         - [x] 新增服务端同步脚本；
         - 服务器自动化同步功能已完成：[用法/usage](#使用方法)
-
+    - 2021年 5月 7日 星期五 13时46分03秒 CST ：
+        - [ ] python相关代码编写中...
+        - [ ] C++相关代码编写中...
 
 ### 使用方法
 - 现有需求：
@@ -148,11 +150,13 @@ jekyll博客构建生成目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
     - [x] 3.计划新增服务端同步脚本；
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本；
         - [x] i Darwin 20.3.0 MacOS Big Sur [~~server端~~/client端✅]
-        - [ ] ii Ubuntu 18.0/20.0 [server端✅/client端❎]
+        - [ ] ii Ubuntu 18.0/20.0 [server端✅/client端✅]
         - [ ] iii CentOS 7 [server端❎/client端❎]
         - [ ] iiii ...
     - [ ] [5.优化脚本已知问题，欢迎提交issues；](https://github.com/Bin4xin/B4xinSynchronize/issues/new)
     - [x] 6.程序运行等待时，加入加载动画；
     - [ ] 7.计划添加python与c++的版本。
+        - [ ] python coding...
+        - [ ] c++ coding...
     
 以上。

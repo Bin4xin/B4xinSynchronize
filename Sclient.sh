@@ -11,9 +11,9 @@ run_Main(){
   #mode dw to run.
   if [ $run_mode = "dw" ];then
     exec_mode=$(echo 'different worksace(dw) mode')
-    echo -e "mode:${exec_mode}"
-    read -p "your git (local) workspace path:" gitPath;
-    read -p "your jekyll (build) workspace path:" buildPath;
+    echo -e "● [Info] Running mode is :${exec_mode} mode now"
+    read -p "● [Info] Plz type in your git (local) workspace path:" gitPath;
+    read -p "● [Info] Plz type in your jekyll (build) workspace path:" buildPath;
     #cd $path && pwd && touch test.txt
     echo -e $gitPath
     echo -e $buildPath
@@ -99,7 +99,7 @@ Synchronize_update_fun(){
 run_mode="$1"
 
 ##firstly to run this program. Read user input to ensure.
-read -p "● [Info] are you sure?(y/n): " go;
+read -p "● [Info] Are you sure?(y/n): " go;
 while [ "$go" != 'y' ] && [ "$go" != 'n' ]
 do
 	read -p "● [Warn]: PLZ type in (y/n): " go;
