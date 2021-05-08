@@ -97,19 +97,31 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
-int func(int x)//x是形参
+int test(int a)
 {
-    //return x*x;
-    //x=x*x;
-    printf("x:%d\n",x);
-
-    //a=a*a;
+    return a;
 }
-int main(void)
+int main(int argc, const char * argv[])
 {
-    int a=10;
-    func(a);//a是实参
-    printf("a:%d\n",a);
+
+    int (*fp)(int a);
+    fp = test;
+    cout<<fp(2)<<endl;
     return 0;
 }
+
+//int func(int x)//x是形参
+//{
+//    //return x*x;
+//    //x=x*x;
+//    printf("x:%d\n",x);
+//
+//    //a=a*a;
+//}
+//int main(void)
+//{
+//    int a=10;
+//    func(a);//a是实参
+//    printf("a:%d\n",a);
+//    return 0;
+//}

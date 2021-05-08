@@ -51,5 +51,6 @@ def plantform_detector():
 
 
 if __name__ == "__main__":
-    plantform_detector()
+
     Check_Run_Mode()
+    plantform_detector()
