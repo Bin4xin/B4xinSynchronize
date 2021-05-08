@@ -37,13 +37,15 @@ If you download and use the open source code, you should fully recognize and und
     - 2021年 4月20日 星期二 11时36分53秒 CST ：
         - 新增服务端同步脚本：[*Sserver.sh*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sserver.sh)
         - 重写`differentWorkspace_mode_fun`函数下的本地文件夹同步功能
-            - 使用衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
+            - 考虑到基准目录和同步目录下存在`.git`等文件、文件夹，故使用rsync时加入衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
+            - `--exclude-from`定义同步规则，若存在参数下的文件，则不对该文件夹进行操作
     - 2021年 4月20日 星期二 22时23分05秒 CST ：
-        - [ ] 新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
+        - [ ] 「构思中...」新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
         - less input...
     - 2021年 4月23日 星期五 16时17分54秒 CST ：
-        - [x] 新增服务端同步脚本；
-        - 服务器自动化同步功能已完成：[用法/usage](#使用方法)
+        - [x] 新增服务端同步脚本；[表格美化*by banemon*仓库地址](https://gitee.com/banemon/linux_sh_script)
+            - [您也可以点击此处查看具体实现代码](https://github.com/Bin4xin/B4xinSynchronize/blob/master/draw_table.sh)
+        - [x] 服务器自动化同步功能已完成：[用法/usage](#使用方法)
     - 2021年 5月 7日 星期五 13时46分03秒 CST ：
         - [ ] python相关代码编写中...
         - [ ] C++相关代码编写中...
@@ -55,9 +57,9 @@ If you download and use the open source code, you should fully recognize and und
     
 本地github工作目录[/blog/github-code/B4xinSynchronize/](https://github.com/Bin4xin/B4xinSynchronize)
 
-本地：bash调试构建目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/]()
+本地：bash调试构建目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/`
 
-jekyll博客构建生成目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/]()
+jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/]`
 
 - case1.*sw mode:[same workspace]* 不需要对（构建后的）代码进行二次移动，直接可以上传；
     - 运行前请检查git是否进行全局配置：`git config --list`，个人建议先进行全局配置；
@@ -76,13 +78,15 @@ jekyll博客构建生成目录[/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
 ├── README.MD                   ────介绍文档
 ├── Sclient.sh                  ────客户端代码同步脚本 
 ├── Sserver.sh                  ────服务端
-├── assets                      ────静态资源
-├── config                      ────配置功能目录
 ├── draw_table.sh               ────画图函数
-├── exclue_delete_files.txt     ────同步删除规则
-├── gitWorkspace                ────工作测试目录
-├── jekyllWorkspace             ────构建测试目录
-└── panel                       ────bash脚本语法参考
+├── exclue_delete_files.txt     ────同步约束规则
+├── assets/                     ────静态资源目录
+├── config/                     ────配置功能目录
+├── gitWorkspace/               ────工作测试目录
+├── jekyllWorkspace/            ────构建测试目录
+├── c/                          ────C++版代码目录
+├── python/                     ────PY版代码目录
+└── panel/                      ────bash脚本语法参考
 ```
 - bash终端命令
     - client端

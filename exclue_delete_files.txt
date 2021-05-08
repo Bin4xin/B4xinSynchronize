@@ -6,4 +6,4 @@
 .project
 gitWorkspace
 jekyllWorkspace
-assets
+CNAME
