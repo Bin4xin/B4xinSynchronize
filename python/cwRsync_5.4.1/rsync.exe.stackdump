@@ -1,0 +1,6 @@
+Exception: STATUS_IN_PAGE_ERROR at eip=66A96660
+eax=000023AF ebx=0047B19C ecx=000023AF edx=00000000 esi=0047B19B edi=00000001
+ebp=00000001 esp=00679A0C program=Z:\share-files\src\learn\com.ingeek.bin4xin\python\cwRsync_5.4.1\rsync.exe, pid 7316, thread main
+cs=0023 ds=002B es=002B fs=0053 gs=002B ss=002B
+Stack trace:
+Frame     Function  Args

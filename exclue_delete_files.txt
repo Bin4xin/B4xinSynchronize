@@ -7,3 +7,5 @@
 gitWorkspace
 jekyllWorkspace
 CNAME
+baidu*
+google*
