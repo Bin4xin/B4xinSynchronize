@@ -26,7 +26,12 @@ If you download and use the open source code, you should fully recognize and und
 
 - 工作流程图：
 
+
+![](/assets/B4xinSynchronize-workflow.png)
+
+<!--
 <div align=center><img width="280px" height="400px" src="/assets/B4xinSynchronize-workflow.png"/></div>
+-->
 
 - *Project Log:*
     - 2021年 4月12日 星期一 15时21分49秒 CST 产生想法需求；
