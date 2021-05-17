@@ -29,7 +29,7 @@ If you download and use the open source code, you should fully recognize and und
 ![](/assets/B4xinSynchronize-workflow.png)
 
 <details>
-<summary><em>*Project Log:</em></summary>
+<summary><em>点击以展开 *Project Log: </em></summary>
 
 - 2021年 4月12日 星期一 15时21分49秒 CST 产生想法需求；
 - 2021年 4月16日 星期五 19时53分40秒 CST 完成初版Beta；
@@ -37,7 +37,7 @@ If you download and use the open source code, you should fully recognize and und
     - 客户端更新脚本基本功能已完成
     - README 关于脚本基本介绍与用法已完成
 - 2021年 4月20日 星期二 11时36分53秒 CST ：
-    - 新增服务端同步脚本：[*Sserver.sh*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sserver.sh)
+    - 新增服务端同步脚本：[*Sserver.sh*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/bash/Sserver.sh)
     - 重写`differentWorkspace_mode_fun`函数下的本地文件夹同步功能
         - 考虑到基准目录和同步目录下存在`.git`等文件、文件夹，故使用rsync时加入衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
         - `--exclude-from`定义同步规则，若存在参数下的文件，则不对该文件夹进行操作
@@ -46,7 +46,7 @@ If you download and use the open source code, you should fully recognize and und
     - less input...
 - 2021年 4月23日 星期五 16时17分54秒 CST ：
     - [x] 新增服务端同步脚本；[表格美化*by banemon*仓库地址](https://gitee.com/banemon/linux_sh_script)
-        - [您也可以点击此处查看具体实现代码](https://github.com/Bin4xin/B4xinSynchronize/blob/master/draw_table.sh)
+        - [您也可以点击此处查看具体实现代码](https://github.com/Bin4xin/B4xinSynchronize/blob/master/bash/functions/draw_table.sh)
     - [x] 服务器自动化同步功能已完成：[用法/usage](#使用方法)
 - 2021年 5月 7日 星期五 13时46分03秒 CST ：
     - [ ] python相关代码编写中...
@@ -144,7 +144,7 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
 
 ### *B4xinSynchronize v0.1*
 
-[*B4xinSynchronize Version 0.1 beta*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
+[*B4xinSynchronize Version 0.1 beta*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/bash/Sclient.sh)
 
 - 基于C/S架构的双端代码同步脚本，由bin4xin编码和开源；
 - *Dual-end code synchronization script based on C/S architecture.*
@@ -159,7 +159,11 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
 
 ### 下一步计划
 
-- [*B4xinSynchronize Version 0.1 Release*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
+<details>
+<summary><em>点击以展开 *下一步计划: </em></summary>
+
+- [~~*B4xinSynchronize Version 0.1 Release*~~](https://github.com/Bin4xin/B4xinSynchronize/blob/master/bash/Sclient.sh)
+- [*B4xinSynchronize Version 0.2 Release*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/bash/Sclient.sh)
     - [x] 1.计划新增[git server. / jekyll server. / other servers...]等选项更新；
     - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
         - [x] git commit暂时使用时间作为基准参考；
@@ -175,5 +179,7 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
     - [ ] 7.计划添加python与c++的版本。
         - [ ] python coding...
         - [ ] c++ coding...
-    
+        
+</details>
+
 以上。
