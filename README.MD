@@ -29,32 +29,30 @@ If you download and use the open source code, you should fully recognize and und
 
 ![](/assets/B4xinSynchronize-workflow.png)
 
-<!--
-<div align=center><img width="280px" height="400px" src="/assets/B4xinSynchronize-workflow.png"/></div>
--->
+<details>
+<summary><em>*Project Log:</em></summary>
 
-- *Project Log:*
-    - 2021年 4月12日 星期一 15时21分49秒 CST 产生想法需求；
-    - 2021年 4月16日 星期五 19时53分40秒 CST 完成初版Beta；
-    - 2021年 4月19日 星期一 14时45分14秒 CST ：
-        - 客户端更新脚本基本功能已完成
-        - README 关于脚本基本介绍与用法已完成
-    - 2021年 4月20日 星期二 11时36分53秒 CST ：
-        - 新增服务端同步脚本：[*Sserver.sh*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sserver.sh)
-        - 重写`differentWorkspace_mode_fun`函数下的本地文件夹同步功能
-            - 考虑到基准目录和同步目录下存在`.git`等文件、文件夹，故使用rsync时加入衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
-            - `--exclude-from`定义同步规则，若存在参数下的文件，则不对该文件夹进行操作
-    - 2021年 4月20日 星期二 22时23分05秒 CST ：
-        - [ ] 「构思中...」新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
-        - less input...
-    - 2021年 4月23日 星期五 16时17分54秒 CST ：
-        - [x] 新增服务端同步脚本；[表格美化*by banemon*仓库地址](https://gitee.com/banemon/linux_sh_script)
-            - [您也可以点击此处查看具体实现代码](https://github.com/Bin4xin/B4xinSynchronize/blob/master/draw_table.sh)
-        - [x] 服务器自动化同步功能已完成：[用法/usage](#使用方法)
-    - 2021年 5月 7日 星期五 13时46分03秒 CST ：
-        - [ ] python相关代码编写中...
-        - [ ] C++相关代码编写中...
-
+- 2021年 4月12日 星期一 15时21分49秒 CST 产生想法需求；
+- 2021年 4月16日 星期五 19时53分40秒 CST 完成初版Beta；
+- 2021年 4月19日 星期一 14时45分14秒 CST ：
+    - 客户端更新脚本基本功能已完成
+    - README 关于脚本基本介绍与用法已完成
+- 2021年 4月20日 星期二 11时36分53秒 CST ：
+    - 新增服务端同步脚本：[*Sserver.sh*](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sserver.sh)
+    - 重写`differentWorkspace_mode_fun`函数下的本地文件夹同步功能
+        - 考虑到基准目录和同步目录下存在`.git`等文件、文件夹，故使用rsync时加入衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
+        - `--exclude-from`定义同步规则，若存在参数下的文件，则不对该文件夹进行操作
+- 2021年 4月20日 星期二 22时23分05秒 CST ：
+    - [ ] 「构思中...」新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
+    - less input...
+- 2021年 4月23日 星期五 16时17分54秒 CST ：
+    - [x] 新增服务端同步脚本；[表格美化*by banemon*仓库地址](https://gitee.com/banemon/linux_sh_script)
+        - [您也可以点击此处查看具体实现代码](https://github.com/Bin4xin/B4xinSynchronize/blob/master/draw_table.sh)
+    - [x] 服务器自动化同步功能已完成：[用法/usage](#使用方法)
+- 2021年 5月 7日 星期五 13时46分03秒 CST ：
+    - [ ] python相关代码编写中...
+    - [ ] C++相关代码编写中...
+</details>
 ### 使用方法
 - 现有需求：
     - case1.更新github仓库代码；
