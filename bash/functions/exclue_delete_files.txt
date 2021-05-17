@@ -1,0 +1,11 @@
+.svn
+.git
+.DS_Store
+*.sql
+*.bak
+.project
+gitWorkspace
+jekyllWorkspace
+CNAME
+baidu*
+google*

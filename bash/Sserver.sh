@@ -1,5 +1,6 @@
 #!/bin/bash
-source ./config/color_print_fun.sh
+##import color_print_func. use print func to echo to console.
+source ./functions/color_print_fun.sh
 
 Loading_Percent_Show(){
 i=0
@@ -63,7 +64,7 @@ Print_Auto_Show(){
 }
 Check_Crontab_list(){
   printf "\033[49;33m当前最新Crontab计划表为：\033[0m\n"
-  crontab -l |bash draw_table.sh -4
+  crontab -l |bash functions/draw_table.sh -4
 }
 Run_Main(){
   green "● 运行中..." && Print_Auto_Show

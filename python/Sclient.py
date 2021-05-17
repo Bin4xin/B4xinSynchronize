@@ -4,6 +4,8 @@ import os
 import random
 from random import choice
 import colorama
+# from view.banner import print
+
 # -*- coding: utf-8 -*-
 # @code by Bin4xin.
 # @File  : Sclient.py
@@ -34,7 +36,7 @@ def toUtf8(zh936):
 # and jump to the function, and make a judgment on the soundness of the program
 # 待完成：
 # 1、python对齐格式化输出
-# 2、运行banner
+# 2、运行banner（已完成）
 
 def Check_Run_Mode():
     if str(argv) == "['dw']":
@@ -45,8 +47,12 @@ def Check_Run_Mode():
         print('help')
         exit()
     else:
-        print('\033[1;31m● [Critical] help Usage : python3 Sclient.py [-h/--help] \033[0m')
-        print('\033[1;31m   how to run : python3 Sclient.py [sw/dw] \033[0m')
+        text = "\033[1;31m ● [Critical]\033[0m"
+        text1 = "\033[1;31m help Usage :1 python3 Sclient.py [-h/--help] \033[0m"
+        text2 = "\033[1;31m how to run : python3 Sclient.py [sw/dw] \033[0m"
+        print(text, end='')
+        print( text1)
+        print( text2)
         exit()
 
 
@@ -129,6 +135,7 @@ banners = [
 
 if __name__ == "__main__":
     print(choice(banners))
+    # function(print)
     argv = sys.argv[1:]
     Check_Run_Mode()
     # plantform_detector()
