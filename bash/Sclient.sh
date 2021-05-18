@@ -13,21 +13,13 @@ run_Main(){
   ##Determine the operating mode of the incoming parameters
   ##mode dw to run.
   if [ $run_mode = "dw" ];then
-    exec_mode=$(echo 'different worksace(dw) mode')
-    typein_gitPath=$(echo -e "\033[32m● [Info] Plz type in your git (local) workspace path: \033[0m")
-    typein_buildPath=$(echo -e "\033[32m● [Info] Plz type in your jekyll (build) workspace path: \033[0m")
-    echo -e "\033[32m● [Info] Running mode is: ${exec_mode} now \033[0m"
-    read -p "$typein_gitPath" gitPath;
-    read -p "$typein_buildPath" buildPath;
-    echo -e "\033[42;37m$gitPath\033[0m"
-    echo -e "\033[42;37m$buildPath\033[0m"
-    ## here to exchange modeFunction. Just another Determine
+    info_show "● [Info] Running mode is: $run_mode mode now"
     differentWorkspace_mode_fun
-    ##mode sw to run.
+  ##mode sw to run.
   elif [ $run_mode = "sw" ];then
-    exec_mode=$(echo 'same worksace(sw) mode')
-    echo -e "\033[32m● [Info] Running mode is: ${exec_mode} now \033[0m"
+    info_show "● [Info] Running mode is: $run_mode mode now"
     sameWorkspace_mode_fun
+  ##
   elif [ $run_mode = "config" ];then
     Remember_Me_Fun
   fi
@@ -35,7 +27,6 @@ run_Main(){
 ##in beta
 Remember_Me_Fun(){
 if [ ! -s "./config/user_config.sh" ];then
-
   touch config/user_config.sh
 	echo testPra=$testPra >> config/user_config.sh
 	echo testPra1=$testPra >> config/user_config.sh
@@ -48,80 +39,92 @@ fi
 Ask_From_Me
 }
 ##in beta
+##ask_from_me() : to detected user config info. detected user's config quickly.
 Ask_From_Me(){
 	source ./config/user_config.sh
+	# shellcheck disable=SC2154
 	echo "looks you have var files now!"
 	array=($(cat config/user_config.sh|grep options_project|awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
-#  for(( i=0;i<${#array[@]};i++)) do
-#  #${#array[@]}获取数组长度用于循环
-#  underline_info_show "[Repo $i]:"${array[i]};
-#  done
-#  i=0
-#  options_projects="dw."${array[i]}
-#  echo $options_projects
-#  run_mode1='dw'
-#  echo ${run_mode1}
-#  eval temp=$(echo \$$options_projects)
-#  echo $temp
   for i in "${!array[@]}";
   do
-      underline_info_show  "● [Info] Detected [Repo $i]:" "${array[$i]}"
-      sleep 0.9
+      info_show  "● [Info] Detected [Repo $i]:" "${array[$i]}"
+      sleep 0.6
   done
-  # shellcheck disable=SC2154
-  optional_msg=$(echo -e "\033[01mChoose your Repos option (default option: 0)[0/1/..] : \033[0m")
-  read -p "$optional_msg" user_option_input;
-  echo $run_mode
-  optional_projects_gitPath=_dw_${array[user_option_input]}_gitDir
-  optional_projects_buildPath=_dw_${array[user_option_input]}_buildDir
-  eval optional_repos=$(echo \$$optional_projects)
-  #cd $optional_repos && pwd
-  if [ ! -d "$optional_repos/.git" ]; then
-    underline_warn_show  "● [Warn] Detected [Repo $user_option_input]:" "${array[user_option_input]} (not git Repos x)"
-    underline_warn_show  "PLZ check your optional git "[${array[user_option_input]}]" path"
-  elif [ -d "$optional_repos/.git" ]; then
-    underline_info_show  "Detected [Repo $user_option_input]:" "${array[user_option_input]} (.git Repos √)"
-  fi
 
 }
-
 differentWorkspace_mode_fun(){
-  if [ $gitPath = $buildPath ];then
-    #ensure_msg=$(echo -e '\033[32m● [Info] detected same path put in. Change to sw mode ?(y/n): \033[0m')
-    ensure_msg=$(info '● [Info] Detected same path type in. Change to sw mode? (y/n):')
-    read -p "$ensure_msg" ensure_ModeChange;
-    while [ "$ensure_ModeChange" != 'y' ]&& [ "$ensure_ModeChange" != 'n' ] && [ "$ensure_ModeChange" != '' ]
-    do
-	    read -p "$warn_msg" ensure_ModeChange;
-    done
-    if [ "$ensure_ModeChange" == 'n' ]; then
-        underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
-        sleep 1
-        exit;
-    fi
-  fi
+  Ask_From_Me
+  optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
+  read -p "$optional_msg" user_option_input;
+  optional_projects_gitPath=_dw_${array[user_option_input]}_gitPath
+  optional_projects_buildPath=_dw_${array[user_option_input]}_buildPath
+  eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
+  eval optional_repo_buildPath=$(echo \$$optional_projects_buildPath)
+  echo $optional_repo_gitPath
+  echo $optional_repo_buildPath
   ##start to use rsync(update & delete) all dir excpet '--exclude0-from'
-  ##rsync -avpz --delete-before --exclude-from functions/exclue_delete_files.txt $buildPath/ $gitPath/
   ##bash func test mode.
-  underline_info_show "● [Info] [SW] mode ensure. Synchronize copy is running..."
-  sameWorkspace_mode_fun
-  sleep 1
+  git_valid_check
+  info_show "● [Info] running Synchronize update from $optional_repo_buildPath to $optional_repo_gitPath"
+  rsync -avpz --delete-before --exclude-from functions/exclue_delete_files.txt $optional_repo_buildPath/ $optional_repo_gitPath/
+  cd $optional_repo_gitPath && pwd && Synchronize_update_fun
 }
 
 sameWorkspace_mode_fun(){
-  info "● [Info] Directly jumping to Synchronize update..."
-  cd $whereAmI && Synchronize_update_fun
+  Ask_From_Me
+  optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
+  read -p "$optional_msg" user_option_input;
+  optional_projects_gitPath=_sw_${array[user_option_input]}_gitPath
+  eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
+  info_show "● [Info] Directly jumping to Synchronize update..."
+  cd $optional_repo_gitPath && pwd && Synchronize_update_fun
 }
+
+#runMode_byCMP_path(){
+#if [ $run_mode = "dw" ]; then
+#  if [ $optional_repo_gitPath = $optional_repo_buildPath ];then
+#      #ensure_msg=$(echo -e '\033[32m● [Info] detected same path put in. Change to sw mode ?(y/n): \033[0m')
+#      ensure_msg=$(underline_warn_show "● [Warn] Detected same path type in. Change to sw mode? (y/n):")
+#      read -p "$ensure_msg" ensure_ModeChange;
+#      while [ "$ensure_ModeChange" != 'y' ]&& [ "$ensure_ModeChange" != 'n' ] && [ "$ensure_ModeChange" != '' ]
+#      do
+#        read -p "$warn_msg" ensure_ModeChange;
+#      done
+#      if [ "$ensure_ModeChange" == 'n' ]; then
+#          underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
+#          sleep 1
+#          exit;
+#      fi
+#      underline_info_show "● [Info] [SW] mode ensure. Synchronize copy is running..."
+#      sameWorkspace_mode_fun
+#      sleep 1
+#  elif [ $optional_repo_gitPath != $optional_repo_buildPath ]; then
+#      differentWorkspace_mode_fun
+#  fi
+#
+#fi
+#}
+
+git_valid_check(){
+  check_vaild_gitRepo=$(cd $optional_repo_gitPath && git rev-parse --is-inside-work-tree)
+  if [ $check_vaild_gitRepo = "true" ]; then
+      common_show "This is a valid git repository \n(but the current working directory may not be the top level.  Check the output of the git rev-parse command if you care)"
+  else
+      underline_critical_show "invalid !"
+      exit
+  fi
+}
+
 Synchronize_update_fun(){
 #if git,then
-  echo 'update!' && info "● [Info] Synchronize update is running in $whereAmI"
+  info_show "● [Info] Synchronize update is running in $optional_repo_gitPath"
 #  update_commit=`date -R`
 #  echo -e "\033[32m● [Info] Synchronize update is running... \033[0m"
 #  git add .
 #  git commit -m "$update_commit commit by B4xinSynchronize."
 #  git push
 #  sleep 1
-#  exit
+  exit
 }
 
 ##Define Incoming running mode parameters exchange to galbol para.
