@@ -120,6 +120,8 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
     ● [Info] Detected [Repo 7]: bigger_than_bigger
     ● [Info] Detected [Repo 8]: Industrial_Control_Wiki_Record
     Choose your Repos option (default option: 0)[0/1/..] : 4
+    This is a valid git repository 
+    (but the current working directory may not be the top level.  Check the output of the git rev-parse command if you care)
     ● [Info] Directly jumping to Synchronize update...
     /Users/bin4xin/blog/github-code/B4xinSynchronize
     ● [Info] Synchronize update is running in /Users/bin4xin/blog/github-code/B4xinSynchronize
