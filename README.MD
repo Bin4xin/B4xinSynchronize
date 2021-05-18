@@ -85,16 +85,16 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
 ├── panel/ ─────────────────────────────────────────────────────────>bash脚本语法参考
 ├── c/ ─────────────────────────────────────────────────────────────>C++版代码目录
 ├── bash/ ──────────────────────────────────────────────────────────>Bash版代码目录
-│   ├── Sclient.sh ───────────────────────────────────────────>客户端代码同步脚本 
-│   ├── Sserver.sh ───────────────────────────────────────────>服务端代码同步脚本
-│   ├── functions/ ───────────────────────────────────────────>Bash代码配置功能目录
-│   │   ├── color_print_fun.sh ─────────────────────────>颜色函数
-│   │   ├── draw_table.sh ──────────────────────────────>画图函数
-│   │   └── exclue_delete_files.txt ────────────────────>同步约束规则
-│   └── config/ ──────────────────────────────────────────────>Bash代码功能目录
-│   │   ├── user_config.sh ─────────────────────────────>Bash本地配置保存信息
-│   │   ├── golbal_var.bak ─────────────────────────────>cron备份文件
-│   │   └── golbal_var.txt ─────────────────────────────>写入cron计划信息
+│   ├── Sclient.sh ─────────────────────────────────────────────────>客户端代码同步脚本 
+│   ├── Sserver.sh ─────────────────────────────────────────────────>服务端代码同步脚本
+│   ├── functions/ ─────────────────────────────────────────────────>Bash代码配置功能目录
+│   │   ├── color_print_fun.sh ─────────────────────────────────────>颜色函数
+│   │   ├── draw_table.sh ──────────────────────────────────────────>画图函数
+│   │   └── exclue_delete_files.txt ────────────────────────────────>同步约束规则
+│   └── config/ ────────────────────────────────────────────────────>Bash代码功能目录
+│   │   ├── user_config.sh ─────────────────────────────────────────>Bash本地配置保存信息
+│   │   ├── golbal_var.bak ─────────────────────────────────────────>cron备份文件
+│   │   └── golbal_var.txt ─────────────────────────────────────────>写入cron计划信息
 └── python/ ────────────────────────────────────────────────────────>PY版代码目录
     ├── cwRsync_5.4.1/ ─────────────────────────────────────────────>sync.exe
     ├── functions/ ─────────────────────────────────────────────────>PY版功能代码目录
@@ -107,16 +107,34 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
     $ git clone https://github.com/Bin4xin/B4xinSynchronize.git
     $ cd B4xinSynchronize/bash
     $ bash Sclient.sh [dw/sw]
-    ● [Info] are you sure?(y/n): y
-    ···
-    根据提示输入git工作目录和构建目录
-    /blog/github-code/B4xinSynchronize/{your_Git_serverPATH}/www/
-    /tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
-    ···
-    ● [Info]Synchronize copy is running... 
-    ● [Info]Synchronize update is running...
+    ● [Info] Are you sure?(y/n): 
+    ● [Info] Running mode is: sw mode now
+    looks you have var files now!
+    ● [Info] Detected [Repo 0]: bin4xin_github_io
+    ● [Info] Detected [Repo 1]: bin4xin_gitee_io
+    ● [Info] Detected [Repo 2]: sentrylab_tokyo_www
+    ● [Info] Detected [Repo 3]: sentrylab_tokyo_about
+    ● [Info] Detected [Repo 4]: B4xinSynchronize
+    ● [Info] Detected [Repo 5]: sweet_ysoserial
+    ● [Info] Detected [Repo 6]: Bin4xin
+    ● [Info] Detected [Repo 7]: bigger_than_bigger
+    ● [Info] Detected [Repo 8]: Industrial_Control_Wiki_Record
+    Choose your Repos option (default option: 0)[0/1/..] : 4
+    ● [Info] Directly jumping to Synchronize update...
+    /Users/bin4xin/blog/github-code/B4xinSynchronize
+    ● [Info] Synchronize update is running in /Users/bin4xin/blog/github-code/B4xinSynchronize
+    ● [Info] Synchronize update is running... 
+    [master bb5fdd0] Tue, 18 May 2021 23:39:57 +0800 commit by B4xinSynchronize.
+     2 files changed, 8 insertions(+), 8 deletions(-)
+    Enumerating objects: 9, done.
+    Counting objects: 100% (9/9), done.
+    Delta compression using up to 8 threads
+    Compressing objects: 100% (5/5), done.
+    Writing objects: 100% (5/5), 573 bytes | 573.00 KiB/s, done.
+    Total 5 (delta 4), reused 0 (delta 0), pack-reused 0
+    remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
     To https://github.com/Bin4xin/B4xinSynchronize.git
-    * [new branch]      master -> master
+       21314fc..bb5fdd0  master -> master
     ```
     - server端
     ```

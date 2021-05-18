@@ -43,7 +43,7 @@ Ask_From_Me
 Ask_From_Me(){
 	source ./config/user_config.sh
 	# shellcheck disable=SC2154
-	echo "looks you have var files now!"
+	underline_info_show "looks you have var files now!"
 	array=($(cat config/user_config.sh|grep options_project|awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
   for i in "${!array[@]}";
   do
@@ -76,6 +76,7 @@ sameWorkspace_mode_fun(){
   read -p "$optional_msg" user_option_input;
   optional_projects_gitPath=_sw_${array[user_option_input]}_gitPath
   eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
+  git_valid_check
   info_show "● [Info] Directly jumping to Synchronize update..."
   cd $optional_repo_gitPath && pwd && Synchronize_update_fun
 }
