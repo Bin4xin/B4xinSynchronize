@@ -42,7 +42,7 @@ If you download and use the open source code, you should fully recognize and und
         - 考虑到基准目录和同步目录下存在`.git`等文件、文件夹，故使用rsync时加入衍生功能`--delete-before --exclude-from`支持源目录、目标目录的同步增加、同步删除
         - `--exclude-from`定义同步规则，若存在参数下的文件，则不对该文件夹进行操作
 - 2021年 4月20日 星期二 22时23分05秒 CST ：
-    - [ ] 「构思中...」新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
+    - [x] 2021年 5月18日 星期二 23时37分52秒 CST：新增定义记忆函数`Remember_Me_Fun` 及衍生询问函数`Ask_From_Me`用户保存本地目录同步配置
     - less input...
 - 2021年 4月23日 星期五 16时17分54秒 CST ：
     - [x] 新增服务端同步脚本；[表格美化*by banemon*仓库地址](https://gitee.com/banemon/linux_sh_script)
@@ -105,7 +105,7 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
     - client端
     ```
     $ git clone https://github.com/Bin4xin/B4xinSynchronize.git
-    $ cd B4xinSynchronize
+    $ cd B4xinSynchronize/bash
     $ bash Sclient.sh [dw/sw]
     ● [Info] are you sure?(y/n): y
     ···
