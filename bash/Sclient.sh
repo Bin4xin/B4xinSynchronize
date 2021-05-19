@@ -24,7 +24,8 @@ run_Main(){
     Remember_Me_Fun
   fi
 }
-##in beta
+##~in beta~ Wed, 19 May 2021 10:38:03 +0800
+# It looks running good
 Remember_Me_Fun(){
 if [ ! -s "./config/user_config.sh" ];then
   touch config/user_config.sh
@@ -38,7 +39,7 @@ elif [ -s "./config/user_config.sh" ];then
 fi
 Ask_From_Me
 }
-##in beta
+##~in beta~ Wed, 19 May 2021 10:38:17 +0800
 ##ask_from_me() : to detected user config info. detected user's config quickly.
 Ask_From_Me(){
 	source ./config/user_config.sh

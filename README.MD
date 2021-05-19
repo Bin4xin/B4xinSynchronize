@@ -101,6 +101,32 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
     │   └── platformDetecter.py
     └── view/ ──────────────────────────────────────────────────────>PY展示目录
 ```
+
+<details>
+<summary><em>点击以展开 *bash终端使用: </em></summary>
+
+修改 `B4xinSynchronize/bash/config/user_config.sh`，注意事项：
+
+- `options_project_{i}`的值连接符为下划线，{i}自定义
+- dw模式目录需加入`gitPath、buildPath`，否则会报`Invalid`，sw模式同理
+
+```
+##project : $your_repo_name
+options_$your_repo_name_{i}="your_repo_name"
+_${run_mode}_$your_repo_name_gitPath="/path/to/your/repo/name"
+_${run_mode}_$your_repo_name_buildPath"/path/to/your/build/project/"
+
+##example:
+
+## dw mode project 0: bin4xin_github_io options
+options_project_0="bin4xin_github_io"
+_dw_bin4xin_github_io_gitPath="/Users/bin4xin/blog/github-code/bin4xin.github.io"
+_dw_bin4xin_github_io_buildPath="/Users/bin4xin/blog/SENTRYLAB-WWW-WEB/_site"
+# sw mode project 4: B4xinSynchronize options
+options_project_4="B4xinSynchronize"
+_sw_B4xinSynchronize_gitPath="/Users/bin4xin/blog/github-code/B4xinSynchronize"
+```
+
 - bash终端命令
     - client端
     ```
@@ -152,13 +178,15 @@ jekyll博客构建生成目录`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/
      ● [Info]任务2: [写入Crontab定时计划] ----------> DONE..... 
     [执行计划] << [config/golbal_var.sh]...
      ● [Info]任务3: [执行Crontab定时计划] ----------> DONE..... 
-    
+
     当前最新Crontab计划表为：
     ╔═══════════════════════════════╗
     ║   * * * * * git checkout -f   ║
     ╚═══════════════════════════════╝
     ALL DONE...
     ```
+
+</details>
 
 - ~~具体使用方法待更新...~~
 
