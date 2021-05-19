@@ -18,8 +18,8 @@ If you download and use the open source code, you should fully recognize and und
 ### 什么是*B4xinSynchronize*
 
 - 功能
-    - 基于双端**代码同步**脚本；
-    - More code , Less git.
+    - 基于双端**代码同步**脚本，让您的git仅是或否
+    - *Let your git only yes or no*
 - 适用场景
     - 将本地调试完成的代码拷贝到工作目录（如jekyll、github）；
     - 将工作目录的代码push至github仓库或服务端；
@@ -80,7 +80,7 @@ If you download and use the open source code, you should fully recognize and und
 - `options_project_{i}`的值连接符为下划线，{i}自定义
 - dw模式目录需加入`gitPath、buildPath`，否则会报`Invalid`，sw模式同理
 
-```
+```bash
 ##project : $your_repo_name
 options_$your_repo_name_{i}="your_repo_name"
 _${run_mode}_$your_repo_name_gitPath="/path/to/your/repo/name"
