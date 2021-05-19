@@ -48,7 +48,7 @@ Ask_From_Me(){
   for i in "${!array[@]}";
   do
       info_show  "● [Info] Detected [Repo $i]:" "${array[$i]}"
-      sleep 0.2
+      sleep 0.1
   done
 
 }
