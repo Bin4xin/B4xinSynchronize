@@ -48,16 +48,17 @@ Ask_From_Me(){
   for i in "${!array[@]}";
   do
       info_show  "● [Info] Detected [Repo $i]:" "${array[$i]}"
-      sleep 0.6
+      sleep 0.3
   done
 
 }
 differentWorkspace_mode_fun(){
   Ask_From_Me
   optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
+  echo $run_mode
   read -p "$optional_msg" user_option_input;
-  optional_projects_gitPath=_dw_${array[user_option_input]}_gitPath
-  optional_projects_buildPath=_dw_${array[user_option_input]}_buildPath
+  optional_projects_gitPath=_$run_mode_${array[user_option_input]}_gitPath
+  optional_projects_buildPath=_$run_mode_${array[user_option_input]}_buildPath
   eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
   eval optional_repo_buildPath=$(echo \$$optional_projects_buildPath)
   echo $optional_repo_gitPath
@@ -72,6 +73,7 @@ differentWorkspace_mode_fun(){
 
 sameWorkspace_mode_fun(){
   Ask_From_Me
+  echo $run_mode
   optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
   read -p "$optional_msg" user_option_input;
   optional_projects_gitPath=_sw_${array[user_option_input]}_gitPath
