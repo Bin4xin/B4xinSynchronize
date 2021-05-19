@@ -43,12 +43,12 @@ Ask_From_Me
 Ask_From_Me(){
 	source ./config/user_config.sh
 	# shellcheck disable=SC2154
-	underline_info_show "looks you have var files now!"
+	common_show "Detected user's conf files inf $whereAmI/config/user_config.sh"
 	array=($(cat config/user_config.sh|grep options_project|awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
   for i in "${!array[@]}";
   do
       info_show  "● [Info] Detected [Repo $i]:" "${array[$i]}"
-      sleep 0.3
+      sleep 0.2
   done
 
 }
@@ -68,52 +68,26 @@ differentWorkspace_mode_fun(){
   git_valid_check
   info_show "● [Info] running Synchronize update from $optional_repo_buildPath to $optional_repo_gitPath"
   rsync -avpz --delete-before --exclude-from functions/exclue_delete_files.txt $optional_repo_buildPath/ $optional_repo_gitPath/
-  cd $optional_repo_gitPath && pwd && Synchronize_update_fun
+  cd $optional_repo_gitPath && Synchronize_update_fun
 }
 
 sameWorkspace_mode_fun(){
   Ask_From_Me
-  echo $run_mode
   optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
   read -p "$optional_msg" user_option_input;
   optional_projects_gitPath=_sw_${array[user_option_input]}_gitPath
   eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
   git_valid_check
   info_show "● [Info] Directly jumping to Synchronize update..."
-  cd $optional_repo_gitPath && pwd && Synchronize_update_fun
+  cd $optional_repo_gitPath && Synchronize_update_fun
 }
-
-#runMode_byCMP_path(){
-#if [ $run_mode = "dw" ]; then
-#  if [ $optional_repo_gitPath = $optional_repo_buildPath ];then
-#      #ensure_msg=$(echo -e '\033[32m● [Info] detected same path put in. Change to sw mode ?(y/n): \033[0m')
-#      ensure_msg=$(underline_warn_show "● [Warn] Detected same path type in. Change to sw mode? (y/n):")
-#      read -p "$ensure_msg" ensure_ModeChange;
-#      while [ "$ensure_ModeChange" != 'y' ]&& [ "$ensure_ModeChange" != 'n' ] && [ "$ensure_ModeChange" != '' ]
-#      do
-#        read -p "$warn_msg" ensure_ModeChange;
-#      done
-#      if [ "$ensure_ModeChange" == 'n' ]; then
-#          underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
-#          sleep 1
-#          exit;
-#      fi
-#      underline_info_show "● [Info] [SW] mode ensure. Synchronize copy is running..."
-#      sameWorkspace_mode_fun
-#      sleep 1
-#  elif [ $optional_repo_gitPath != $optional_repo_buildPath ]; then
-#      differentWorkspace_mode_fun
-#  fi
-#
-#fi
-#}
 
 git_valid_check(){
   check_vaild_gitRepo=$(cd $optional_repo_gitPath && git rev-parse --is-inside-work-tree)
   if [ $check_vaild_gitRepo = "true" ]; then
-      common_show "This is a valid git repository \n(but the current working directory may not be the top level.  Check the output of the git rev-parse command if you care)"
+      common_show "This is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
   else
-      underline_critical_show "invalid !"
+      underline_critical_show "Invalid git repository!!"
       exit
   fi
 }
