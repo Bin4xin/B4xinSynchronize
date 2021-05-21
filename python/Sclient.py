@@ -1,9 +1,9 @@
 import sys
 import platform
 import os
-import random
 from random import choice
 import colorama
+import random
 # from view.banner import print
 
 # -*- coding: utf-8 -*-
@@ -51,8 +51,8 @@ def Check_Run_Mode():
         text1 = "\033[1;31m help Usage :1 python3 Sclient.py [-h/--help] \033[0m"
         text2 = "\033[1;31m how to run : python3 Sclient.py [sw/dw] \033[0m"
         print(text, end='')
-        print( text1)
-        print( text2)
+        print(text1)
+        print(text2)
         exit()
 
 
@@ -75,19 +75,7 @@ def differentWorkspace_mode_func():
         print('\033[1;33m● [-o-] I feel stupid for you to use python instead of bash on [ Darwin/Linux ]\033[0m')
 
 
-# def Synchronize_update_fun():
 
-
-# def plantform_detector():
-#     sysstr = platform.system()
-#     if sysstr == "Windows":
-#         print("Windows")
-#     elif sysstr == "Linux":
-#         print("Linux")
-#     elif sysstr == "Darwin":
-#         print("Mac")
-#     else:
-#         print("Others")
 banners = [
     r'''
     .------..------..------..------..------..------..------..------..------.
