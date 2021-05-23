@@ -222,7 +222,7 @@ _sw_B4xinSynchronize_gitPath="/Users/bin4xin/blog/github-code/B4xinSynchronize"
         - [x] i Darwin 20.3.0 MacOS Big Sur [~~server端~~/client端✅]
         - [ ] ii Ubuntu 18.0/20.0 [server端✅/client端✅]
         - [ ] iii CentOS 7 [server端❎/client端❎]
-        - [ ] iiii ...
+        - [ ] iv ...
     - [ ] [5.优化脚本已知问题，欢迎提交issues；](https://github.com/Bin4xin/B4xinSynchronize/issues/new)
     - [x] 6.程序运行等待时，加入加载动画；
     - [ ] 7.计划添加python与c++的版本。
