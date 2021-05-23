@@ -3,6 +3,7 @@ PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 LANG=en_US.UTF-8
 source ./functions/color_print_fun.sh
+source ./functions/banners.sh
 ##
 #use if statement to judge detection working mode
 #set type to dw==diferent workspace: your blog (jekyll server) work space different from git workspace;
@@ -48,7 +49,8 @@ Ask_From_Me(){
 	array=($(cat config/user_config.sh|grep options_project|awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
   for i in "${!array[@]}";
   do
-      info_show  "● [Info] Detected [Repo $i]:" "${array[$i]}"
+      info_show  "● [Info] Detected :"
+      common_show "[Repo $i] : ${array[$i]}"
       sleep 0.1
   done
 
@@ -112,11 +114,13 @@ read_msg=$(echo -e "\033[32m● [Info] Are you sure?(y/n): \033[0m")
 warn_msg=$(echo -e "\033[33m● [Warn] PLZ type in (y/n): \033[0m")
 whereAmI=$(pwd)
 
+
 if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ];then
   underline_critical_show "● [CRITICAL] ERROR INPUT! \ntype in parameter error \nUsage: bash Sclient.sh [ config | dw/sw ]"
   exit;
 fi
 
+#banners_show
 read -p "$read_msg" go;
 while [ "$go" != 'y' ] && [ "$go" != 'n' ] && [ "$go" != '' ]
 do
