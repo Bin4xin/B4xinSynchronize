@@ -102,6 +102,7 @@ Synchronize_update_fun(){
   update_commit=`date -R`
   echo -e "\033[32m● [Info] Synchronize update is running... \033[0m"
   git add .
+<<<<<<< HEAD
   git commit -m "$update_commit commit by B4xinSynchronize."
   #git commit --amend --author='Author Bin4xin <chihou.pro@gmail.com>' -m "$update_commit commit by B4xinSynchronize."
   #git commit -t -m "$update_commit commit by B4xinSynchronize."
@@ -109,6 +110,13 @@ Synchronize_update_fun(){
 #  do
 #    git commit -t $line -m "$update_commit  commit by B4xinSynchronize."
 #  done
+=======
+  #git commit -t -m "$update_commit commit by B4xinSynchronize."
+  for line in $git_commit_filename
+  do
+    git commit -t $line -m "$update_commit  commit by B4xinSynchronize."
+  done
+>>>>>>> origin/master
   git push
   sleep 1
   exit
