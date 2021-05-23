@@ -101,7 +101,7 @@ Synchronize_update_fun(){
   update_commit=`date -R`
   echo -e "\033[32m● [Info] Synchronize update is running... \033[0m"
   git add .
-  git commit -m "$update_commit commit by B4xinSynchronize."
+  git commit -m "$update_commit $0 commit by B4xinSynchronize."
   git push
   sleep 1
   exit

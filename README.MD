@@ -215,7 +215,7 @@ _sw_B4xinSynchronize_gitPath="/Users/bin4xin/blog/github-code/B4xinSynchronize"
     - [x] 1.计划新增[git server. / jekyll server. / other servers...]等选项更新；
     - [ ] [2.目前部分代码传参数为硬编码形式，计划修改成100%变量形式；](https://github.com/Bin4xin/B4xinSynchronize/blob/master/Sclient.sh)
         - [x] git commit暂时使用时间作为基准参考；
-        - [ ] 计划加入其他基准commit；
+        - [x] 计划加入其他基准commit；读取文件名称输出
         - [ ] 由于bash脚本特殊性，正常输出特殊字符出行报错现象，banner输出暂时使用文件读取输出，有更好的办法欢迎讨论。
     - [x] 3.计划新增服务端同步脚本；
     - [ ] 4.目前暂时只测试于`Darwin 20.3.0 Darwin Kernel Version 20.3.0 /RELEASE_X86_64 x86_64`，逐渐测试与其他发行版本；
