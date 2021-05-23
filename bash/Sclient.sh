@@ -98,10 +98,14 @@ git_valid_check(){
 Synchronize_update_fun(){
 #if git,then
   info_show "● [Info] Synchronize update is running in $optional_repo_gitPath"
+  git_commit_filename=`git log --pretty=format:"" --name-only  -1`
   update_commit=`date -R`
   echo -e "\033[32m● [Info] Synchronize update is running... \033[0m"
   git add .
-  git commit -m "$update_commit $0 commit by B4xinSynchronize."
+  for line in $git_commit_filename
+  do
+    git commit -m "$update_commit $line commit by B4xinSynchronize."
+  done
   git push
   sleep 1
   exit
@@ -120,7 +124,7 @@ if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'confi
   exit;
 fi
 
-#banners_show
+
 read -p "$read_msg" go;
 while [ "$go" != 'y' ] && [ "$go" != 'n' ] && [ "$go" != '' ]
 do
