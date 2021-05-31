@@ -10,62 +10,59 @@ source ./functions/banners.sh
 #such as your jekyll build '_site' dir equals to ~/blog/jekyll/www/_site/ , git(master) dir equals to ~/blog/git/{yourname}.github.io/
 #so use {dw}.
 ##
-run_Main(){
+run_Main() {
   ##Determine the operating mode of the incoming parameters
   ##mode dw to run.
-  if [ $run_mode = "dw" ];then
+  if [ $run_mode = "dw" ]; then
     info_show "● [Info] Running mode is: $run_mode mode now"
     differentWorkspace_mode_fun
   ##mode sw to run.
-  elif [ $run_mode = "sw" ];then
+  elif [ $run_mode = "sw" ]; then
     info_show "● [Info] Running mode is: $run_mode mode now"
     sameWorkspace_mode_fun
   ##
-  elif [ $run_mode = "config" ];then
+  elif [ $run_mode = "config" ]; then
     Remember_Me_Fun
   fi
 }
 ##~in beta~ Wed, 19 May 2021 10:38:03 +0800
 # It looks running good
-Remember_Me_Fun(){
-if [ ! -s "./config/user_config.sh" ];then
-  touch config/user_config.sh
-	echo testPra=$testPra >> config/user_config.sh
-	echo testPra1=$testPra >> config/user_config.sh
-	echo testPra2=$testPra >> config/user_config.sh
+Remember_Me_Fun() {
+  if [ ! -s "./config/user_config.sh" ]; then
+    touch config/user_config.sh
+    echo testPra=$testPra >>config/user_config.sh
+    echo testPra1=$testPra >>config/user_config.sh
+    echo testPra2=$testPra >>config/user_config.sh
 
-elif [ -s "./config/user_config.sh" ];then
-	#statements
-	echo "Golbal_Var存在,next."
-fi
-Ask_From_Me
+  elif [ -s "./config/user_config.sh" ]; then
+    #statements
+    echo "Golbal_Var存在,next."
+  fi
+  Ask_From_Me
 }
 ##~in beta~ Wed, 19 May 2021 10:38:17 +0800
 ##ask_from_me() : to detected user config info. detected user's config quickly.
-Ask_From_Me(){
-	source ./config/user_config.sh
-	# shellcheck disable=SC2154
-	common_show "Detected user's conf files inf $whereAmI/config/user_config.sh"
-	array=($(cat config/user_config.sh|grep options_project|awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
-  for i in "${!array[@]}";
-  do
-      info_show  "● [Info] Detected :"
-      common_show "[Repo $i] : ${array[$i]}"
-      sleep 0.1
+Ask_From_Me() {
+  source ./config/user_config.sh
+  # shellcheck disable=SC2154
+  common_show "Detected user's conf files inf $whereAmI/config/user_config.sh"
+  array=($(cat config/user_config.sh | grep options_project | awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
+  for i in "${!array[@]}"; do
+    info_show "● [Info] Detected :"
+    common_show "[Repo $i] : ${array[$i]}"
+    sleep 0.1
   done
 
 }
-differentWorkspace_mode_fun(){
+differentWorkspace_mode_fun() {
   Ask_From_Me
   optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
   echo $run_mode
-  read -p "$optional_msg" user_option_input;
-  optional_projects_gitPath=_$run_mode_${array[user_option_input]}_gitPath
-  optional_projects_buildPath=_$run_mode_${array[user_option_input]}_buildPath
+  read -p "$optional_msg" user_option_input
+  optional_projects_gitPath=_dw_${array[user_option_input]}_gitPath
+  optional_projects_buildPath=_dw_${array[user_option_input]}_buildPath
   eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
   eval optional_repo_buildPath=$(echo \$$optional_projects_buildPath)
-  echo $optional_repo_gitPath
-  echo $optional_repo_buildPath
   ##start to use rsync(update & delete) all dir excpet '--exclude0-from'
   ##bash func test mode.
   git_valid_check
@@ -74,10 +71,10 @@ differentWorkspace_mode_fun(){
   cd $optional_repo_gitPath && Synchronize_update_fun
 }
 
-sameWorkspace_mode_fun(){
+sameWorkspace_mode_fun() {
   Ask_From_Me
   optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
-  read -p "$optional_msg" user_option_input;
+  read -p "$optional_msg" user_option_input
   optional_projects_gitPath=_sw_${array[user_option_input]}_gitPath
   eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
   git_valid_check
@@ -85,36 +82,29 @@ sameWorkspace_mode_fun(){
   cd $optional_repo_gitPath && Synchronize_update_fun
 }
 
-git_valid_check(){
+git_valid_check() {
   check_vaild_gitRepo=$(cd $optional_repo_gitPath && git rev-parse --is-inside-work-tree)
   if [ $check_vaild_gitRepo = "true" ]; then
-      common_show "This is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
+    common_show "$optional_repo_gitPath is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
   else
-      underline_critical_show "Invalid git repository!!"
-      exit
+    underline_critical_show "Invalid git repository!!"
+    exit
   fi
 }
 
-Synchronize_update_fun(){
-#if git,then
+Synchronize_update_fun() {
+  #if git,then
   info_show "● [Info] Synchronize update is running in $optional_repo_gitPath"
-  git_commit_filename=`git log --pretty=format:"" --name-only  -1`
-  update_commit=`date -R`
+  # i want to add commit names Distinguish by every different files (git files name) here
+  # such as :
+  # README.MD  README.MD file Mon, 31 May 2021 22:54:09 +0800 commit by B4xinSynchronize.
+  # but exactly: This feature has not yet been implemented
+  #
+  # git_commit_filename=`git log --pretty=format:"" --name-only  -1`
+  update_commit=$(date -R)
   echo -e "\033[32m● [Info] Synchronize update is running... \033[0m"
   git add .
-# git commit --amend --author='Author Bin4xin <chihou.pro@gmail.com>' -m "$update_commit commit by B4xinSynchronize."
   git commit -m "$update_commit commit by B4xinSynchronize."
-#git commit --amend --author='Author Bin4xin <chihou.pro@gmail.com>' -m "$update_commit commit by B4xinSynchronize."
-#git commit -t -m "$update_commit commit by B4xinSynchronize."
-#  for line in $git_commit_filename
-#  do
-#    git commit -t $line -m "$update_commit  commit by B4xinSynchronize."
-#  done
-  #git commit -t -m "$update_commit commit by B4xinSynchronize."
-#  for line in $git_commit_filename
-#  do
-#    git commit -t $line -m "$update_commit  commit by B4xinSynchronize."
-#  done
   git push
   sleep 1
   exit
@@ -127,23 +117,20 @@ read_msg=$(echo -e "\033[32m● [Info] Are you sure?(y/n): \033[0m")
 warn_msg=$(echo -e "\033[33m● [Warn] PLZ type in (y/n): \033[0m")
 whereAmI=$(pwd)
 
-
-if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ];then
+if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ]; then
   underline_critical_show "● [CRITICAL] ERROR INPUT! \ntype in parameter error \nUsage: bash Sclient.sh [ config | dw/sw ]"
-  exit;
+  exit
 fi
 
-
-read -p "$read_msg" go;
-while [ "$go" != 'y' ] && [ "$go" != 'n' ] && [ "$go" != '' ]
-do
-	read -p "$warn_msg" go;
+read -p "$read_msg" go
+while [ "$go" != 'y' ] && [ "$go" != 'n' ] && [ "$go" != '' ]; do
+  read -p "$warn_msg" go
 done
 
-if [ "$go" == 'n' ];then
+if [ "$go" == 'n' ]; then
   underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
-  sleep 0.9;
-	exit;
+  sleep 0.9
+  exit
 fi
 ##Determine whether the incoming parameters are recognized by the program
 ##otherwise the program will exit abnormally, let the program judge by itself.

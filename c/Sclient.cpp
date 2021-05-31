@@ -12,11 +12,12 @@ int platform_type;
 
 int platform_type_judgeMode(int platform_type_judgeMode)
 {
-    /*传入platform_detector(platform_type)
-    * 行参为platform_type_judgeMode
-    * 进而来判断系统
+    /*
+    传入platform_detector(platform_type)
+    行参为platform_type_judgeMode
+    进而来判断系统
     */
-    printf("platform_type_judgeMode value is: %c\n", platform_type_judgeMode);
+    //printf("platform_type_judgeMode value is: %c\n", platform_type_judgeMode);
     if ((platform_type_judgeMode == 'l') || (platform_type_judgeMode == 'u') || (platform_type_judgeMode == 'm')){
         cout<<"jump to unix_func"<<endl;
         }
@@ -26,16 +27,24 @@ int platform_type_judgeMode(int platform_type_judgeMode)
     else{
         cout<<"wrong !!!"<<endl;
         }
-    return 0;
+    sameWorkspace_mode_fun(platform_type_inMode);
+    differentWorkspace_mode_fun(platform_type_inMode);
+//    return 0;
 }
 
-int sameWorkspace_mode_fun(){
+int sameWorkspace_mode_fun(int platform_type_inMode){
+    //int platform_type_judgeMode(int platform_type_judgeMode);
+
+    printf("In sw mode, platform_type_judgeMode value is: %c\n", platform_type_judgeMode);
     cout<<"GOGO"<<endl;
-    return 0;
+//    return 0;
 }
-int differentWorkspace_mode_fun(){
+int differentWorkspace_mode_fun(int platform_type_inMode){
+    //int platform_type_judgeMode(int platform_type_judgeMode);
+
+    printf("In dw mode, platform_type_judgeMode value is: %c\n", platform_type_judgeMode);
     cout<<"YIYI"<<endl;
-    return 0;
+//    return 0;
 }
 
 void platform_detector()
@@ -72,11 +81,16 @@ void platform_detector()
      #endif
 
      if(1==no_os_flag){
-         cout<<"No OS Defined ,I do not know what the os is!"<<endl;
+        platform_type='e';
+        cout<<"No OS Defined ,I do not know what the os is!"<<endl;
      }
      platform_type_judgeMode(platform_type);
 }
 
+/*
+main函数；主要来对传入参数进行判断dw sw参数 和非运行模式参数报错运行
+根据运行模式来进行windows/UNIX（MAC）的运行状态
+*/
 
 typedef void (*func)(void);
 int main(int argc, const char * argv[]){
@@ -84,12 +98,12 @@ int main(int argc, const char * argv[]){
     if((2 == argc) && (0 == strcmp(argv[1],"dw"))){
           printf("The argument supplied is %s\n", argv[1]);
           //cout << typeid(argv[1]).name() << endl;
-          platform_detector();
+          //platform_detector();
           sameWorkspace_mode_fun();
           }
         else if((2 == argc) && (0 == strcmp(argv[1],"sw"))){
           printf("The argument supplied is %s\n", argv[1]);
-          platform_detector();
+          //platform_detector();
           differentWorkspace_mode_fun();
           }
        else if( argc > 2 ){
