@@ -14,3 +14,6 @@ Type "help", "copyright", "credits" or "license" for more information.
 'Darwin'
 ```
 
+- 2021年 6月 1日 星期二 22时18分03秒 CST：
+    - 相关函数跳转已完成，待代码细化
+

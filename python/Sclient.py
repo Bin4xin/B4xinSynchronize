@@ -123,7 +123,5 @@ banners = [
 
 if __name__ == "__main__":
     print(choice(banners))
-    # function(print)
     argv = sys.argv[1:]
     Check_Run_Mode()
-    # plantform_detector()
