@@ -64,20 +64,20 @@ def diffWorkMode(sysType):
     print('YIYI:' + benchmark_dir)
 
 
-def scripts(run_mode):
-    #print(run_mode)
-    if str(run_mode) == "dw":
-        print("jump tp differentWorkspace_mode_func()")
-        diffWorkMode(sysType)
-    elif str(run_mode) == "sw":
-        print("jump tp sameWorkspace_mode_func()")
-        sameWorkMode(sysType)
-    elif str(run_mode) == "-h" or str(run_mode) == "--help":
-        print('help')
-        exit()
-    else:
-        errMsg = "\033[1;31m ● [Critical] excepted paras type in:\n\033[0m"
-        errMsg += "\033[1;31m help usage : python3 Sclient.py [-h / --help]\n\033[0m"
-        errMsg += "\033[1;31m running usage : python3 Sclient.py [sw / dw]\033[0m"
-        print(errMsg)
-        exit()
+def scripts(list):
+    print(list)
+    # if str(run_mode) == "dw":
+    #     print("jump tp differentWorkspace_mode_func()")
+    #     diffWorkMode(sysType)
+    # elif str(run_mode) == "sw":
+    #     print("jump tp sameWorkspace_mode_func()")
+    #     sameWorkMode(sysType)
+    # elif str(run_mode) == "-h" or str(run_mode) == "--help":
+    #     print('help')
+    #     exit()
+    # else:
+    #     errMsg = "\033[1;31m ● [Critical] excepted paras type in:\n\033[0m"
+    #     errMsg += "\033[1;31m help usage : python3 Sclient.py [-h / --help]\n\033[0m"
+    #     errMsg += "\033[1;31m running usage : python3 Sclient.py [sw / dw]\033[0m"
+    #     print(errMsg)
+    #     exit()

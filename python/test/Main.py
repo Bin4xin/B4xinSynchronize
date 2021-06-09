@@ -1,12 +1,14 @@
-from __future__ import print_function
-from functions.common import scripts
-import view.banner
-
 # -*- coding: utf-8 -*-
 # @code by Bin4xin.
 # @File  : Sclient.py
 # @Date  : 2021/5/09
 # @Author: Bin4xin - chihou.pro@gmail.com - https://benchmarkhub.com/Bin4xin
+# from __future__ import print_function
+
+from functions.common import scripts
+import view.banner
+import click
+
 
 try:
     import sys
@@ -34,13 +36,45 @@ except KeyboardInterrupt:
         sys.exit("\r[%s] [CRITICAL] %s" % (time.strftime("%X"), errMsg))
 
 
-if __name__ == "__main__":
-    if len(sys.argv)<2:
-        errMsg = "\033[1;31m ● [Critical] wrong number of parameters passed in \n\033[0m"
-        errMsg += "\033[1;31m running usage : python3 Sclient.py [sw / dw]\n\033[0m"
-        errMsg += "\033[1;31m help usage : python3 Sclient.py [-h / --help]\033[0m"
-        print(errMsg)
-    else:
-        run_mode = sys.argv[1]
-        print(run_mode)
-        scripts(run_mode)
+# if __name__ == "__main__":
+#     if len(sys.argv)<2:
+#         errMsg = "\033[1;31m ● [Critical] wrong number of parameters passed in \n\033[0m"
+#         errMsg += "\033[1;31m running usage : python3 Sclient.py [sw / dw]\n\033[0m"
+#         errMsg += "\033[1;31m help usage : python3 Sclient.py [-h / --help]\033[0m"
+#         print(errMsg)
+#     else:
+#         run_mode = sys.argv[1]
+#         print(run_mode)
+#         scripts(run_mode)
+
+
+@click.command()
+@click.option('--list', type=str, default='dw', help='Number of greetings.')
+def dw(list):
+    """Type in [dw --help] to learn more. B4xinSync program [dw running mode] code based on python3. """
+    click.echo("running mothod: %s" % list)
+    #config_read()
+    return list
+
+
+@click.command()
+@click.option('--list', type=str, default='sw', help='Number of greetings.')
+def sw(list):
+    """Type in [sw --help] to learn more. B4xinSync program [sw running mode] code based on python3. """
+    click.echo("running mothod: %s" % list)
+    #config_read()
+    return list
+
+
+@click.group()
+def cli():
+    pass
+
+
+cli.add_command(dw)
+cli.add_command(sw)
+
+if __name__ == '__main__':
+    cli()
+    #scripts(list)
+    print(list)

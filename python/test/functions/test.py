@@ -4,29 +4,14 @@ import click
 import re
 
 
-# if __name__ == "__main__":
-#     if len(sys.argv)<2:
-#         errMsg = "\033[1;31m ● [Critical] wrong number of parameters passed in \n\033[0m"
-#         errMsg += "\033[1;31m running usage : python3 Sclient.py [sw / dw]\n\033[0m"
-#         errMsg += "\033[1;31m help usage : python3 Sclient.py [-h / --help]\033[0m"
-#         print(errMsg)
-#     else:
-#         run_mode = sys.argv[1]
-#         print(run_mode)
-#         scripts(run_mode)
-# @click.option('--method', prompt='Program running Method', help='choose: [dw|sw]  dw: different workspace mode. Such as <git push> - from jekyll build dir to git repos dir.')
-
-
 def config_read():
-
-    # file = open('./user_config.ini', 'r', encoding='UTF-8')
     for line in open("/Users/bin4xin/blog/github-code/B4xinSynchronize/python/test/functions/user_config.ini"):
         line = line.strip('\n')
-        m = re.match('^#',line)
+        m = re.match('^#', line)
         if m is None:
             # print(line)
-            array=(line)
-            print(array)
+            array = (line)
+            return array
 
 
 @click.command()
@@ -37,7 +22,6 @@ def dw(list):
     config_read()
 
 
-
 @click.command()
 @click.option('--list', type=str, default='sw', help='Number of greetings.')
 def sw(list):
@@ -45,11 +29,6 @@ def sw(list):
     click.echo("running mothod: %s" % list)
     config_read()
 
-
-# def hello(count, method):
-#     """B4xinSync program that code based on python3."""
-#     for x in range(count):
-#         click.echo('Hello %s!' % method)
 
 @click.group()
 def cli():
