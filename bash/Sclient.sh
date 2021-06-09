@@ -47,8 +47,8 @@ Ask_From_Me() {
   # shellcheck disable=SC2154
   common_show "Detected user's conf files inf $whereAmI/config/user_config.sh"
   array=($(cat config/user_config.sh | grep options_project | awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
+  info_show "● [Info] Detected :"
   for i in "${!array[@]}"; do
-    info_show "● [Info] Detected :"
     common_show "[Repo $i] : ${array[$i]}"
     sleep 0.1
   done
