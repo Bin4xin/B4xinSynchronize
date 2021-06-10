@@ -2,9 +2,9 @@
 source ./functions/color_print_fun.sh
 source ./functions/banners.sh
 source ./functions/proxy.sh
-PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
-export PATH
-LANG=en_US.UTF-8
+#PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
+#export PATH
+#LANG=en_US.UTF-8
 
 ##
 #use if statement to judge detection working mode
