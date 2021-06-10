@@ -14,7 +14,7 @@ proxy_set(){
     sleep 0.9
   fi
   export http_proxy='http://127.0.0.1:8082'; export HTTP_PROXY='http://127.0.0.1:8082'; export https_proxy='http://127.0.0.1:8082'; export HTTPS_PROXY='http://127.0.0.1:8082'
-  echo $proxy_content
+  echo "set:" $proxy_content
 }
 
 proxy_unset(){
@@ -35,7 +35,7 @@ proxy_unset(){
   echo "if ok!"
   unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
   echo "ok!"
-  echo $proxy_content
+  echo "unset:" $proxy_content
 }
 
 
