@@ -14,7 +14,7 @@ proxy_set(){
     underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
     sleep 0.9
   fi
-  echo "if ok!"
+  export
 }
 
 proxy_unset(){
@@ -35,6 +35,7 @@ proxy_unset(){
   echo "if ok!"
   unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
   echo "ok!"
+  export
 }
 
 proxy_main(){
