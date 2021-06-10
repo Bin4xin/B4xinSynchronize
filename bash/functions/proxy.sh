@@ -3,11 +3,13 @@ source ./functions/color_print_fun.sh
 
 proxy_set(){
   set_command=$(export http_proxy="http://127.0.0.1:8082"; export HTTP_PROXY="http://127.0.0.1:8082"; export https_proxy="http://127.0.0.1:8082"; export HTTPS_PROXY="http://127.0.0.1:8082")
-
+  read_msg=$(echo -e "\033[33m● [Warn] set proxy to $set_command? (y/n): \033[0m")
+  
 }
 
 proxy_unset(){
 #  warn_show "● [Warn] ready to unset Http Proxy Shell. "
+  unset_command=$(unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY)
   read_msg=$(echo -e "\033[33m● [Warn] ready to unset Http Proxy Shell? (y/n): \033[0m")
   warn_msg=$(echo -e "\033[33m● [Warn] PLZ type in (y/n): \033[0m")
   read -p "$read_msg" ready
@@ -19,7 +21,7 @@ proxy_unset(){
     sleep 0.9
     exit
   fi
-  unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
+  $unset_command
 }
 
 proxy_main(){
