@@ -35,7 +35,7 @@ proxy_unset(){
   echo "if ok!"
   unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
   echo "ok!"
-  $proxy_content
+  echo $proxy_content
 }
 
 
