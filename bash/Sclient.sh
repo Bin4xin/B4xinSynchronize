@@ -61,7 +61,6 @@ Ask_From_Me() {
 differentWorkspace_mode_fun() {
   Ask_From_Me
   optional_msg=$(common_show "Choose your Repos option (default option: 0)[0/1/..] : ")
-  echo $run_mode
   read -p "$optional_msg" user_option_input
   optional_projects_gitPath=_dw_${array[user_option_input]}_gitPath
   optional_projects_buildPath=_dw_${array[user_option_input]}_buildPath

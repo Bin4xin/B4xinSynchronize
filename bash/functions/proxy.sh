@@ -8,13 +8,11 @@ proxy_set(){
   while [ "$ready" != 'y' ] && [ "$ready" != 'n' ] && [ "$ready" != '' ]; do
     read -p "$warn_msg" ready
   done
-  echo "while ok!"
   if [ "$ready" == 'n' ]; then
     underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
     sleep 0.9
   fi
   export http_proxy='http://127.0.0.1:8082'; export HTTP_PROXY='http://127.0.0.1:8082'; export https_proxy='http://127.0.0.1:8082'; export HTTPS_PROXY='http://127.0.0.1:8082'
-  echo "set:" $proxy_content
 }
 
 proxy_unset(){
@@ -26,29 +24,23 @@ proxy_unset(){
   while [ "$ready" != 'y' ] && [ "$ready" != 'n' ] && [ "$ready" != '' ]; do
     read -p "$warn_msg" ready
   done
-  echo "while ok!"
   if [ "$ready" == 'n' ]; then
     underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
     sleep 0.9
     exit
   fi
-  echo "if ok!"
   unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
-  echo "ok!"
-  echo "unset:" $proxy_content
 }
 
 
 detected_proxy="export |grep proxy"
 proxy_content=$(echo ${detected_proxy}|awk '{run=$0;system(run)}')
 proxy_main(){
-
-echo "proxy_content:" $proxy_content
-if [ ! -n "$proxy_content" ]; then
-  info_show "● [Info] Detected no proxy export this shell. setting Http Proxy Shell Export Line..."
-  proxy_set
-else
-  info_show "● [Info] Detected proxy export this shell"
-fi
+  if [ ! -n "$proxy_content" ]; then
+    info_show "● [Info] Detected no proxy export this shell. setting Http Proxy Shell Export Line..."
+    proxy_set
+  else
+    info_show "● [Info] Detected proxy export this shell"
+  fi
 }
 
