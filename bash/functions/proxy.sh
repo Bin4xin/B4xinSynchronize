@@ -4,7 +4,7 @@ source ./functions/color_print_fun.sh
 proxy_set(){
   set_command=$(export http_proxy="http://127.0.0.1:8082"; export HTTP_PROXY="http://127.0.0.1:8082"; export https_proxy="http://127.0.0.1:8082"; export HTTPS_PROXY="http://127.0.0.1:8082")
   read_msg=$(echo -e "\033[33m● [Warn] set proxy to $set_command? (y/n): \033[0m")
-  
+
 }
 
 proxy_unset(){
@@ -16,12 +16,15 @@ proxy_unset(){
   while [ "$ready" != 'y' ] && [ "$ready" != 'n' ] && [ "$ready" != '' ]; do
     read -p "$warn_msg" ready
   done
+  echo "while ok!"
   if [ "$ready" == 'n' ]; then
     underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
     sleep 0.9
     exit
   fi
+  echo "if ok!"
   $unset_command
+  echo "ok!"
 }
 
 proxy_main(){
