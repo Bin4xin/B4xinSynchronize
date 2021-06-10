@@ -1,9 +1,11 @@
 #!/bin/bash
+source ./functions/color_print_fun.sh
+source ./functions/banners.sh
+source ./functions/proxy.sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 LANG=en_US.UTF-8
-source ./functions/color_print_fun.sh
-source ./functions/banners.sh
+
 ##
 #use if statement to judge detection working mode
 #set type to dw==diferent workspace: your blog (jekyll server) work space different from git workspace;
@@ -11,6 +13,8 @@ source ./functions/banners.sh
 #so use {dw}.
 ##
 run_Main() {
+
+  proxy_main
   ##Determine the operating mode of the incoming parameters
   ##mode dw to run.
   if [ $run_mode = "dw" ]; then
@@ -36,7 +40,7 @@ Remember_Me_Fun() {
 
   elif [ -s "./config/user_config.sh" ]; then
     #statements
-    echo "Golbal_Var存在,next."
+    echo "user_config存在."
   fi
   Ask_From_Me
 }
@@ -107,6 +111,7 @@ Synchronize_update_fun() {
   git commit -m "$update_commit commit by B4xinSynchronize."
   git push
   sleep 1
+  proxy_unset
   exit
 }
 
@@ -118,7 +123,7 @@ warn_msg=$(echo -e "\033[33m● [Warn] PLZ type in (y/n): \033[0m")
 whereAmI=$(pwd)
 
 if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ]; then
-  underline_critical_show "● [CRITICAL] ERROR INPUT! \ntype in parameter error \nUsage: bash Sclient.sh [ config | dw/sw ]"
+  underline_critical_show "● [CRITICAL] ERROR INPUT! \ntype in parameter error \nUsage: bash Sclient.sh [ config|dw|sw ]"
   exit
 fi
 
