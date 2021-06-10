@@ -2,9 +2,19 @@
 source ./functions/color_print_fun.sh
 
 proxy_set(){
-  set_command=$(export http_proxy="http://127.0.0.1:8082"; export HTTP_PROXY="http://127.0.0.1:8082"; export https_proxy="http://127.0.0.1:8082"; export HTTPS_PROXY="http://127.0.0.1:8082")
+  set_command="export http_proxy='http://127.0.0.1:8082'; export HTTP_PROXY='http://127.0.0.1:8082'; export https_proxy='http://127.0.0.1:8082'; export HTTPS_PROXY='http://127.0.0.1:8082'"
   read_msg=$(echo -e "\033[33m● [Warn] set proxy to $set_command? (y/n): \033[0m")
-
+  warn_msg=$(echo -e "\033[33m● [Warn] PLZ type in (y/n): \033[0m")
+  read -p "$read_msg" ready
+  while [ "$ready" != 'y' ] && [ "$ready" != 'n' ] && [ "$ready" != '' ]; do
+    read -p "$warn_msg" ready
+  done
+  echo "while ok!"
+  if [ "$ready" == 'n' ]; then
+    underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
+    sleep 0.9
+  fi
+  echo "if ok!"
 }
 
 proxy_unset(){
