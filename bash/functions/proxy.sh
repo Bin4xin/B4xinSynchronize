@@ -9,7 +9,7 @@ proxy_set(){
 
 proxy_unset(){
 #  warn_show "● [Warn] ready to unset Http Proxy Shell. "
-  unset_command=$(unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY)
+#  unset_command=$(unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY)
   read_msg=$(echo -e "\033[33m● [Warn] ready to unset Http Proxy Shell? (y/n): \033[0m")
   warn_msg=$(echo -e "\033[33m● [Warn] PLZ type in (y/n): \033[0m")
   read -p "$read_msg" ready
@@ -23,7 +23,7 @@ proxy_unset(){
     exit
   fi
   echo "if ok!"
-  $unset_command
+  unset http_proxy HTTP_PROXY https_proxy HTTPS_PROXY
   echo "ok!"
 }
 
