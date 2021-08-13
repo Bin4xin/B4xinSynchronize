@@ -9,7 +9,7 @@ import time
 
 PYVERSION = sys.version.split()[0]
 
-if PYVERSION < "2.6":
+if PYVERSION < "2.7":
     sys.exit("[%s] [CRITICAL] incompatible Python version detected ('%s'). To successfully run sqlmap you'll have to use version 2.6, 2.7 or 3.x (visit 'https://www.python.org/downloads/')" % (time.strftime("%X"), PYVERSION))
 
 errors = []
