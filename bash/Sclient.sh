@@ -1,7 +1,8 @@
 #!/bin/bash
-source ./functions/color_print_fun.sh
-source ./functions/banners.sh
-source ./functions/proxy.sh
+whereAmI=$(pwd)
+source $whereAmI/functions/color_print_fun.sh
+source $whereAmI/functions/banners.sh
+source $whereAmI/functions/proxy.sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 LANG=en_US.UTF-8
@@ -12,17 +13,17 @@ LANG=en_US.UTF-8
 #such as your jekyll build '_site' dir equals to ~/blog/jekyll/www/_site/ , git(master) dir equals to ~/blog/git/{yourname}.github.io/
 #so use {dw}.
 ##
-run_Main() {
 
+run_Main() {
   proxy_main
   ##Determine the operating mode of the incoming parameters
   ##mode dw to run.
   if [ $run_mode = "dw" ]; then
-    info_show "● [Info] Running mode is: $run_mode mode now"
+    info_show "[`date +%Y/%m/%d/%T`] [Info] Running mode is: $run_mode mode now"
     differentWorkspace_mode_fun
   ##mode sw to run.
   elif [ $run_mode = "sw" ]; then
-    info_show "● [Info] Running mode is: $run_mode mode now"
+    info_show "[`date +%Y/%m/%d/%T`] [Info] Running mode is: $run_mode mode now"
     sameWorkspace_mode_fun
   ##
   elif [ $run_mode = "config" ]; then
@@ -47,11 +48,11 @@ Remember_Me_Fun() {
 ##~in beta~ Wed, 19 May 2021 10:38:17 +0800
 ##ask_from_me() : to detected user config info. detected user's config quickly.
 Ask_From_Me() {
-  source ./config/user_config.sh
+  source $whereAmI/config/user_config.sh
   # shellcheck disable=SC2154
   common_show "Detected user's conf files in $whereAmI/config/user_config.sh"
   array=($(cat config/user_config.sh | grep options_project | awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
-  info_show "● [Info] Detected :"
+  info_show "[`date +%Y/%m/%d/%T`] [Info] Detected :"
   for i in "${!array[@]}"; do
     common_show "[Repo $i] : ${array[$i]}"
     sleep 0.1
@@ -69,7 +70,7 @@ differentWorkspace_mode_fun() {
   ##start to use rsync(update & delete) all dir excpet '--exclude0-from'
   ##bash func test mode.
   git_valid_check
-  info_show "● [Info] running Synchronize update from $optional_repo_buildPath to $optional_repo_gitPath"
+  info_show "[`date +%Y/%m/%d/%T`] [Info] running Synchronize update from $optional_repo_buildPath to $optional_repo_gitPath"
   rsync -avpz --delete-before --exclude-from functions/exclue_delete_files.txt $optional_repo_buildPath/ $optional_repo_gitPath/
   cd $optional_repo_gitPath && Synchronize_update_fun
 }
@@ -81,7 +82,7 @@ sameWorkspace_mode_fun() {
   optional_projects_gitPath=_sw_${array[user_option_input]}_gitPath
   eval optional_repo_gitPath=$(echo \$$optional_projects_gitPath)
   git_valid_check
-  info_show "● [Info] Directly jumping to Synchronize update..."
+  info_show "[`date +%Y/%m/%d/%T`] [Info] Directly jumping to Synchronize update..."
   cd $optional_repo_gitPath && Synchronize_update_fun
 }
 
@@ -97,7 +98,7 @@ git_valid_check() {
 
 Synchronize_update_fun() {
   #if git,then
-  info_show "● [Info] Synchronize update is running in $optional_repo_gitPath"
+  info_show "[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running in $optional_repo_gitPath"
   # i want to add commit names Distinguish by every different files (git files name) here
   # such as :
   # README.MD  README.MD file Mon, 31 May 2021 22:54:09 +0800 commit by B4xinSynchronize.
@@ -105,7 +106,7 @@ Synchronize_update_fun() {
   #
   # git_commit_filename=`git log --pretty=format:"" --name-only  -1`
   update_commit=$(date -R)
-  echo -e "\033[32m● [Info] Synchronize update is running... \033[0m"
+  echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running... \033[0m"
   git add .
   git commit -m "$update_commit commit by B4xinSynchronize."
   git push
@@ -117,12 +118,12 @@ Synchronize_update_fun() {
 ##Define Incoming running mode parameters exchange to galbol para.
 ##firstly to run this program. Read user input to ensure.
 run_mode="$1"
-read_msg=$(echo -e "\033[32m● [Info] Are you sure?(y/n): \033[0m")
-warn_msg=$(echo -e "\033[33m● [Warn] PLZ type in (y/n): \033[0m")
-whereAmI=$(pwd)
+read_msg=$(echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Are you sure?(y/n): \033[0m")
+warn_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] PLZ type in (y/n): \033[0m")
+
 
 if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ]; then
-  underline_critical_show "● [CRITICAL] ERROR INPUT! \ntype in parameter error \nUsage: bash Sclient.sh [ config|dw|sw ]"
+  underline_critical_show "[`date +%Y/%m/%d/%T`] [CRITICAL] ERROR INPUT! \ntype in parameter error \nUsage: bash Sclient.sh [ config|dw|sw ]"
   exit
 fi
 
@@ -132,7 +133,7 @@ while [ "$go" != 'y' ] && [ "$go" != 'n' ] && [ "$go" != '' ]; do
 done
 
 if [ "$go" == 'n' ]; then
-  underline_warn_show "● [Warn] Detected user input [no]. \nQuit!"
+  underline_warn_show "[`date +%Y/%m/%d/%T`] [Warn] Detected user input [no]. \nQuit!"
   sleep 0.9
   exit
 fi
