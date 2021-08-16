@@ -1,5 +1,4 @@
 #!/bin/bash
-
 whereAmI=`pwd`
 source $whereAmI/functions/banners.sh
 

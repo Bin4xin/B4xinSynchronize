@@ -1,8 +1,8 @@
 #!/bin/bash
 whereAmI=$(pwd)
-source $whereAmI/functions/color_print_fun.sh
-source $whereAmI/functions/banners.sh
-source $whereAmI/functions/proxy.sh
+source ./functions/color_print_fun.sh
+source ./functions/banners.sh
+source ./functions/proxy.sh
 PATH=/bin:/sbin:/usr/bin:/usr/sbin:/usr/local/bin:/usr/local/sbin:~/bin
 export PATH
 LANG=en_US.UTF-8
@@ -48,10 +48,10 @@ Remember_Me_Fun() {
 ##~in beta~ Wed, 19 May 2021 10:38:17 +0800
 ##ask_from_me() : to detected user config info. detected user's config quickly.
 Ask_From_Me() {
-  source $whereAmI/config/user_config.sh
+  source ./config/user_config.sh
   # shellcheck disable=SC2154
-  common_show "Detected user's conf files in $whereAmI/config/user_config.sh"
-  array=($(cat config/user_config.sh | grep options_project | awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
+  common_show "Detected user's conf files in ./config/user_config.sh"
+  array=($(cat ./config/user_config.sh | grep options_project | awk -F'"' '{i = 1; while (i <= NF) {if ($i ~/=$/) print $(i+1);i++}}'))
   info_show "[`date +%Y/%m/%d/%T`] [Info] Detected :"
   for i in "${!array[@]}"; do
     common_show "[Repo $i] : ${array[$i]}"
@@ -89,7 +89,7 @@ sameWorkspace_mode_fun() {
 git_valid_check() {
   check_vaild_gitRepo=$(cd $optional_repo_gitPath && git rev-parse --is-inside-work-tree)
   if [ $check_vaild_gitRepo = "true" ]; then
-    common_show "$optional_repo_gitPath is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
+    common_show "[`date +%Y/%m/%d/%T`] $optional_repo_gitPath is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
   else
     underline_critical_show "Invalid git repository!!"
     exit
@@ -105,11 +105,11 @@ Synchronize_update_fun() {
   # but exactly: This feature has not yet been implemented
   #
   # git_commit_filename=`git log --pretty=format:"" --name-only  -1`
-  update_commit=$(date -R)
-  echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running... \033[0m"
+  commit_author=`git config --global --list|grep user.name|awk -F"=" '{print $2}'`
+  echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running. \033[0m"
   git add .
-  git commit -m "$update_commit commit by B4xinSynchronize."
-  git push
+  git commit -m "[`date +%Y/%m/%d/%T`] B4xinSync: commit by $commit_author."
+  git push -u origin master
   sleep 1
   proxy_unset
   exit

@@ -26,7 +26,7 @@ _dw_sentrylab_tokyo_about_buildPath="/Users/bin4xin/blog/SENTRYLAB-ABOUT-WEB/_si
 ##############
 # project 4: B4xinSynchronize options
 options_project_4="B4xinSynchronize"
-_sw_B4xinSynchronize_gitPath="/Users/bin4xin/blog/github-code/B4xinSynchronize"
+_sw_B4xinSynchronize_gitPath="/Users/bin4xin/blog/github-code/develop/B4xinSynchronize"
 
 # project 5: sweet_ysoserial options
 options_project_5="sweet_ysoserial"

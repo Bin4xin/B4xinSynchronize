@@ -1,6 +1,4 @@
 #!/bin/bash
-whereAmI=$(pwd)
-source $whereAmI/functions/color_print_fun.sh
 
 proxy_set(){
   read_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] set proxy ?default:127.0.0.1:8082 (y/n): \033[0m")
