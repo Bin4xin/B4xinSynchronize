@@ -51,6 +51,8 @@ If you download and use the open source code, you should fully recognize and und
 - 2021年 5月 7日 星期五 13时46分03秒 CST ：
     - [ ] python相关代码编写中...
     - [ ] C++相关代码编写中...
+- 2021年 8月17日 星期二 09时48分23秒 CST ：
+    - 修改程序workflow的图片流程；
 </details>
 
 ### 使用方法
@@ -61,6 +63,7 @@ If you download and use the open source code, you should fully recognize and und
 - case1.*sw mode:[same workspace]* 不需要对（构建后的）代码进行二次移动，直接可以上传；
     - 运行前请检查git是否进行全局配置：`git config --list`，个人建议先进行全局配置；
         - [参考：起步 - 初次运行 Git 前的配置](https://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE)
+        - Github自8/13开始弃用密码凭证解决[remote: Support for password authentication was removed on August 13, 2021. Please use a personal access token instead.](https://stackoverflow.com/questions/68775869/support-for-password-authentication-was-removed-please-use-a-personal-access-to)
         - 此处case假设在`/blog/github-code/B4xinSynchronize/`目录下运行`B4xinSynchronize.sh`那么则更新的为`B4xinSynchronize`仓库
     - 同步更新
     
@@ -70,7 +73,7 @@ If you download and use the open source code, you should fully recognize and und
         - 此处case则分别输入`/blog/github-code/B4xinSynchronize/{your_Git_serverPATH}/www/` 和`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/`
     - 同步更新
 
-- 点击以获取 *B4xinSynchronize [ bash / python / C++ code ]* (https://github.com/Bin4xin/B4xinSynchronize/releases)
+- 点击以获取 *B4xinSynchronize [ bash / <del>python / C++</del> code ]* (https://github.com/Bin4xin/B4xinSynchronize/releases)
 - ~~具体使用方法待更新...~~
 
 <details>
