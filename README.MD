@@ -73,7 +73,7 @@ If you download and use the open source code, you should fully recognize and und
         - 此处case则分别输入`/blog/github-code/B4xinSynchronize/{your_Git_serverPATH}/www/` 和`/tmp/com.ingeek.B4xinSynchronize.Bybin4xin/_site/`
     - 同步更新
 
-- 点击以获取 *B4xinSynchronize [ bash / <del>python / C++</del> code ]* (https://github.com/Bin4xin/B4xinSynchronize/releases)
+- 点击以获取<bash | <del>python | C++</del>>[*B4xinSynchronize* code](https://github.com/Bin4xin/B4xinSynchronize/releases)
 - ~~具体使用方法待更新...~~
 
 <details>
