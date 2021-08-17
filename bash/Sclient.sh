@@ -91,7 +91,7 @@ git_valid_check() {
   if [ "$check_vaild_gitRepo" == "true" ]; then
     common_show "[`date +%Y/%m/%d/%T`] $optional_repo_gitPath is a valid git repository. \n But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)"
   else
-    underline_critical_show "[`date +%Y/%m/%d/%T`] [CRITICAL] Invalid git repository!!"
+    critical "[`date +%Y/%m/%d/%T`] [CRITICAL] Invalid git repository!!"
     exit
   fi
 }
@@ -123,7 +123,7 @@ warn_msg=$(echo -e "\033[33m[`date +%Y/%m/%d/%T`] [Warn] PLZ type in (y/n): \033
 
 
 if [ "$run_mode" != 'dw' ] && [ "$run_mode" != 'sw' ] && [ "$run_mode" != 'config' ]; then
-  underline_critical_show "[`date +%Y/%m/%d/%T`] [CRITICAL] ERROR INPUT! \nType in parameter error Usage: bash Sclient.sh <config|dw|sw>"
+  critical "[`date +%Y/%m/%d/%T`] [CRITICAL] ERROR INPUT! \nType in parameter error Usage: bash Sclient.sh <config|dw|sw>"
   exit
 fi
 

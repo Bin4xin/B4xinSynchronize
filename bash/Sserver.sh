@@ -25,13 +25,13 @@ done
 sleep 0.3
 printf "\n"
 echo  "[备份计划] >> [crontab -l > config/golbal_var.sh.]..."
-green "● [Info]任务1: $Crontab_task_show_bakUP ----------> DONE....."
+info_show "● [Info]任务1: $Crontab_task_show_bakUP ----------> DONE....."
 sleep 0.9
 echo "[写入计划] >> [config/golbal_var.sh]..."
-green "● [Info]任务2: $Crontab_task_show_addPlan ----------> DONE....."
+info_show "● [Info]任务2: $Crontab_task_show_addPlan ----------> DONE....."
 sleep 0.9
 echo "[执行计划] << [config/golbal_var.sh]..."
-green "● [Info]任务3: $Crontab_task_show_runCron ----------> DONE....."
+info_show "● [Info]任务3: $Crontab_task_show_runCron ----------> DONE....."
 sleep 0.9
 }
 
@@ -63,22 +63,23 @@ Print_Auto_Show(){
   printf "%-5s %-20s %-20s %-20s\n" 任务进行中: $Crontab_task_show_bakUP $Crontab_task_show_addPlan $Crontab_task_show_runCron
 }
 Check_Crontab_list(){
-  printf "\033[49;33m当前最新Crontab计划表为：\033[0m\n"
+  info_show "[`date +%Y/%m/%d/%T`] [Info] 当前最新Crontab计划表为："
+ # printf "\033[49;33m当前最新Crontab计划表为：\033[0m\n"
   crontab -l |bash functions/draw_table.sh -4
 }
 Run_Main(){
-  green "● 运行中..." && Print_Auto_Show
+  info_show "[`date +%Y/%m/%d/%T`] [Info] 运行中..." && Print_Auto_Show
   CrontabPlan_Main && Loading_Percent_Show
   printf "\n"
   Check_Crontab_list
-  printf "ALL DONE..."
+  info_show "[`date +%Y/%m/%d/%T`] [Info] ALL DONE..."
   echo
 }
 
 work_path="$1"
 if [ ! -n "$work_path" ];then
-  echo -e "\033[31m● [Warn]ERROR: parameter error; \033[0m"
-  echo -e "\033[34m● [Info]Usage: bash Sserver.sh [{/path/to/git_workSpace/}] \033[0m"
+  info_show "[`date +%Y/%m/%d/%T`] [Info] Usage: bash Sserver.sh <path/to/git_workSpace/>"
+  critical "[`date +%Y/%m/%d/%T`] [CRITICAL] ERROR: parameter error"
   exit;
 fi
 Run_Main

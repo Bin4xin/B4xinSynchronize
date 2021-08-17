@@ -253,7 +253,7 @@ ALL DONE...
 
 ### 其他
 
-- logo生成 ASCII Art Library For Python
+- logo生成 ASCII Art Library For Python - (art PYPI docs)[https://pypi.org/project/art/]
 
 ```
 $ python3 -m pip install art
