@@ -101,65 +101,82 @@ options_project_4="B4xinSynchronize"
 _sw_B4xinSynchronize_gitPath="/Users/bin4xin/blog/github-code/B4xinSynchronize"
 ```
 
-- bash终端命令
-    - client端
-    ```
-    $ brew install gawk
-    $ git clone https://github.com/Bin4xin/B4xinSynchronize.git
-    $ cd B4xinSynchronize/bash
-    $ bash Sclient.sh [dw/sw]
-    ● [Info] Are you sure?(y/n): 
-    ● [Info] Running mode is: sw mode now
-    looks you have var files now!
-    ● [Info] Detected [Repo 0]: bin4xin_github_io
-    ● [Info] Detected [Repo 1]: bin4xin_gitee_io
-    ● [Info] Detected [Repo 2]: sentrylab_tokyo_www
-    ● [Info] Detected [Repo 3]: sentrylab_tokyo_about
-    ● [Info] Detected [Repo 4]: B4xinSynchronize
-    ● [Info] Detected [Repo 5]: sweet_ysoserial
-    ● [Info] Detected [Repo 6]: Bin4xin
-    ● [Info] Detected [Repo 7]: bigger_than_bigger
-    ● [Info] Detected [Repo 8]: Industrial_Control_Wiki_Record
-    Choose your Repos option (default option: 0)[0/1/..] : 4
-    This is a valid git repository 
-    (but the current working directory may not be the top level.  Check the output of the git rev-parse command if you care)
-    ● [Info] Directly jumping to Synchronize update...
-    /Users/bin4xin/blog/github-code/B4xinSynchronize
-    ● [Info] Synchronize update is running in /Users/bin4xin/blog/github-code/B4xinSynchronize
-    ● [Info] Synchronize update is running... 
-    [master bb5fdd0] Tue, 18 May 2021 23:39:57 +0800 commit by B4xinSynchronize.
-     2 files changed, 8 insertions(+), 8 deletions(-)
-    Enumerating objects: 9, done.
-    Counting objects: 100% (9/9), done.
-    Delta compression using up to 8 threads
-    Compressing objects: 100% (5/5), done.
-    Writing objects: 100% (5/5), 573 bytes | 573.00 KiB/s, done.
-    Total 5 (delta 4), reused 0 (delta 0), pack-reused 0
-    remote: Resolving deltas: 100% (4/4), completed with 4 local objects.
-    To https://github.com/Bin4xin/B4xinSynchronize.git
-       21314fc..bb5fdd0  master -> master
-    ```
-    - server端
-    ```
-    $ bash Sserver.sh [/path/to/git/workspace/]
-     ● 运行中... 
-    任务进行中: [Crontab定时计划备份] [写入Crontab定时计划] [执行Crontab定时计划]
-    备份您的当前的Crontab计划
-    执行添加最新的Crontab计划：
-    [==================================================>]    
-    [备份计划] >> [crontab -l > config/golbal_var.sh.]...
-     ● [Info]任务1: [Crontab定时计划备份] ----------> DONE..... 
-    [写入计划] >> [config/golbal_var.sh]...
-     ● [Info]任务2: [写入Crontab定时计划] ----------> DONE..... 
-    [执行计划] << [config/golbal_var.sh]...
-     ● [Info]任务3: [执行Crontab定时计划] ----------> DONE..... 
 
-    当前最新Crontab计划表为：
-    ╔═══════════════════════════════╗
-    ║   * * * * * git checkout -f   ║
-    ╚═══════════════════════════════╝
-    ALL DONE...
-    ```
+- client端
+
+```
+$ brew install gawk
+$ git clone https://github.com/Bin4xin/B4xinSynchronize.git
+$ cd B4xinSynchronize/bash
+$ bash Sclient.sh sw
+                                   ..
+`7MM"""Yp,                       .Bin.               .A"Xin\
+  MM    Yb        _                                ,MI    ""Y
+  MM    dP      ,AM   `7M'   `MF'`7MM  `7MMpMMMb.  `MMb.     `7M'   `MF'`7MMpMMMb.   ,p6"bo
+  MM"""bg.     AVMM     `VA ,V'    MM    MM    MM    `YMMNq.   VA   ,V    MM    MM  6M'  OO
+  MM    `Y   ,W' MM       XMX      MM    MM    MM  .     `MM    VA ,V     MM    MM  8M
+  MM    ,9 ,W'   MM     ,V' VA.    MM    MM    MM  Mb     dM     VVV      MM    MM  YM.    ,
+.JMMmmmd9  AmmmmmMMmm .AM.   .MA..JMML..JMML  JMML.P"Ybmmd"      ,V     .JMML  JMML. YMbmd'
+                 MM                                             ,V
+                 MM                                          OOb"
+                                                            Code by Bin4xin
+[2021/08/17/10:35:58] [Info] Are you sure?(y/n):
+[2021/08/17/10:36:01] [Info] Detected proxy export this shell
+[2021/08/17/10:36:01] [Info] Running mode is: sw mode now
+Detected user's conf files in ./config/user_config.sh
+[2021/08/17/10:36:01] [Info] Detected :
+[Repo 0] : bin4xin_github_io
+[Repo 1] : bin4xin_gitee_io
+[Repo 2] : sentrylab_tokyo_www
+[Repo 3] : sentrylab_tokyo_about
+[Repo 4] : B4xinSynchronize
+[Repo 5] : sweet_ysoserial
+[Repo 6] : Bin4xin
+[Repo 7] : bigger_than_bigger
+[Repo 8] : Industrial_Control_Wiki_Record
+Choose your Repos option (default option: 0)[0/1/..] : 4
+[2021/08/17/10:36:02] /Users/bin4xin/blog/github-code/develop/B4xinSynchronize is a valid git repository.
+ But the current working directory may not be the top level. Check the output of the git rev-parse command if you care)
+[2021/08/17/10:36:02] [Info] Directly jumping to Synchronize update...
+[2021/08/17/10:36:02] [Info] Synchronize update is running in /Users/bin4xin/blog/github-code/develop/B4xinSynchronize
+[2021/08/17/10:36:03] [Info] Synchronize update is running.
+[master 7d3615d] [2021/08/17/10:36:03] B4xinSync: commit by bin4xin.
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+Enumerating objects: 7, done.
+Counting objects: 100% (7/7), done.
+Delta compression using up to 8 threads
+Compressing objects: 100% (4/4), done.
+Writing objects: 100% (4/4), 463 bytes | 463.00 KiB/s, done.
+Total 4 (delta 3), reused 0 (delta 0), pack-reused 0
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To https://github.com/Bin4xin/B4xinSynchronize.git
+   10f27cf..7d3615d  master -> master
+Branch 'master' set up to track remote branch 'master' from 'origin'.
+[2021/08/17/10:36:05] [Warn] ready to unset Http Proxy Shell? (y/n):
+```
+
+- server端
+
+```
+$ bash Sserver.sh [/path/to/git/workspace/]
+ ● 运行中... 
+任务进行中: [Crontab定时计划备份] [写入Crontab定时计划] [执行Crontab定时计划]
+备份您的当前的Crontab计划
+执行添加最新的Crontab计划：
+[==================================================>]    
+[备份计划] >> [crontab -l > config/golbal_var.sh.]...
+ ● [Info]任务1: [Crontab定时计划备份] ----------> DONE..... 
+[写入计划] >> [config/golbal_var.sh]...
+ ● [Info]任务2: [写入Crontab定时计划] ----------> DONE..... 
+[执行计划] << [config/golbal_var.sh]...
+ ● [Info]任务3: [执行Crontab定时计划] ----------> DONE..... 
+
+当前最新Crontab计划表为：
+╔═══════════════════════════════╗
+║   * * * * * git checkout -f   ║
+╚═══════════════════════════════╝
+ALL DONE...
+```
 
 </details>
 
