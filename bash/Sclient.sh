@@ -109,7 +109,7 @@ Synchronize_update_fun() {
   echo -e "\033[32m[`date +%Y/%m/%d/%T`] [Info] Synchronize update is running. \033[0m"
   git add .
   git commit -m "[`date +%Y/%m/%d/%T`] B4xinSync: commit by $commit_author."
-  git push -u origin master
+  git push
   sleep 1
   proxy_unset
   exit

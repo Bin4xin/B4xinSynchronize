@@ -9,7 +9,7 @@ _dw_bin4xin_github_io_buildPath="/Users/bin4xin/blog/SENTRYLAB-WWW-WEB/_site"
 # project 1: bin4xin_gitee_io options
 options_project_1="bin4xin_gitee_io"
 _dw_bin4xin_gitee_io_gitPath="/Users/bin4xin/blog/gitee-code/bin4xin"
-_dw_bin4xin_gitee_io_buildPath="/Users/bin4xin/blog/SENTRYLAB-WWW-WEB/_site"
+_dw_bin4xin_gitee_io_buildPath="/Users/bin4xin/blog/SENTRYLAB-ABOUT-WEB/_site"
 
 # project 2: sentrylab_tokyo_www options
 options_project_2="sentrylab_tokyo_www"
