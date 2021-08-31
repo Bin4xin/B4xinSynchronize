@@ -43,3 +43,7 @@ _sw_bigger_than_bigger_gitPath="/Users/bin4xin/blog/github-code/bigger-than-bigg
 # project 8 Industrial_Control_Wiki_Record options
 options_project_8="Industrial_Control_Wiki_Record"
 _sw_Industrial_Control_Wiki_Record_gitPath="/Users/bin4xin/blog/github-code/Industrial-Control-Wiki-Record"
+
+# project 9 WAFucker options
+options_project_9="WAFucker"
+_sw_WAFucker_gitPath="/Users/bin4xin/blog/github-code/WAFucker"

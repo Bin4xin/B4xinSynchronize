@@ -1,6 +1,6 @@
 # B4xinSynchronize：基于C/S架构的双端代码同步脚本
 
-### *注意！ATTENTION PLZ!!!*
+## ***请注意!!!ATTENTION PLZ!!!***
 
 您若下载并使用该开源代码应充分认知并理解：
     
